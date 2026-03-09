@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자주 묻는 질문 — Claude Code 가이드</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">CC</div>가이드</a>
+            <ul class="nav-links">
+                <li><a href="intro.html">소개</a></li>
+                <li><a href="who.html">추천 대상</a></li>
+                <li><a href="terminal.html">터미널</a></li>
+                <li><a href="install.html">설치</a></li>
+                <li><a href="start.html">시작하기</a></li>
+                <li><a href="commands.html">명령어</a></li>
+                <li><a href="usecases.html">활용 사례</a></li>
+                <li><a href="claudemd.html">CLAUDE.md</a></li>
+                <li><a href="tips.html">꿀팁</a></li>
+                <li><a href="projects.html">실전 프로젝트</a></li>
+                <li><a href="git.html">Git</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="resources.html">추천 자료</a></li>
+                <li><a href="tools.html">유용한 도구</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="테마 변경">🌙</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="intro.html">소개</a><a href="who.html">추천 대상</a><a href="terminal.html">터미널</a><a href="install.html">설치</a>
+        <a href="start.html">시작하기</a><a href="commands.html">명령어</a><a href="usecases.html">활용 사례</a>
+        <a href="claudemd.html">CLAUDE.md</a><a href="tips.html">꿀팁</a><a href="projects.html">실전 프로젝트</a><a href="git.html">Git</a><a href="faq.html">FAQ</a>
+        <a href="resources.html">추천 자료</a>
+        <a href="tools.html">유용한 도구</a>
+    </div>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="breadcrumb"><a href="../index.html">홈</a><span class="sep">›</span><span>자주 묻는 질문</span></div>
+            <div class="page-number">12</div>
+            <span class="section-label">❓ FAQ</span>
+            <h1 class="section-title">자주 묻는 질문</h1>
+        </div>
+    </div>
+
+    <section style="padding-top:40px;">
+        <div class="container">
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">코딩을 전혀 몰라도 쓸 수 있나요?</button>
+                    <div class="faq-answer">네, 가능합니다! Claude Code에서 하는 대화는 한국어로 자유롭게 하면 돼요. '이 파일 정리해줘', '보고서 만들어줘' 같은 일상적인 말로 충분합니다. 터미널 명령어도 Claude가 대신 실행해 주기 때문에 외울 필요가 없어요.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">비용이 얼마나 드나요?</button>
+                    <div class="faq-answer">Claude Pro 구독 (월 $20)이면 시작할 수 있어요. 더 많이 사용하려면 Max 5x ($100/월) 또는 Max 20x ($200/월) 플랜도 있어요. 가벼운 사용이라면 Pro로 충분합니다. API 키를 직접 구매하는 방법도 있지만, 비개발자에게는 구독이 가장 간편해요.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">내 파일이 외부로 유출되나요?</button>
+                    <div class="faq-answer">Claude Code는 여러분의 로컬 컴퓨터에서 동작해요. 파일 내용은 Claude API로 전송되어 처리되지만, Anthropic은 Pro/Max 구독 사용자의 데이터를 모델 학습에 사용하지 않습니다. 그래도 민감한 정보(비밀번호, 개인정보 등)는 별도로 관리하는 것이 좋아요.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">웹 Claude(claude.ai)와 뭐가 다른가요?</button>
+                    <div class="faq-answer">가장 큰 차이는 <strong>파일 접근</strong>이에요. 웹 Claude는 파일을 업로드해야 하지만, Claude Code는 폴더의 모든 파일에 직접 접근합니다. 또한 파일을 직접 생성·수정·삭제할 수 있고, 대화 길이 제한도 훨씬 넉넉해요. 반복 작업 자동화와 대용량 데이터 처리에 특히 강합니다.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">Claude Code가 실수하면 어떡하나요?</button>
+                    <div class="faq-answer">Claude Code는 파일을 수정하기 전에 항상 허락을 구해요. 변경 내용을 미리 보여주니까 확인 후 승인하면 돼요. 만약 실수가 발생했다면, <kbd class='kbd'>Esc</kbd>를 두 번 누르면 이전 상태로 되돌릴 수 있는 체크포인트가 표시됩니다. 중요한 파일은 작업 전에 백업해 두는 것도 좋은 습관이에요.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">인터넷 검색도 가능한가요?</button>
+                    <div class="faq-answer">기본적으로 Claude Code는 로컬 파일 작업에 집중해요. 하지만 웹 검색이나 URL 접근 기능을 추가할 수 있고, MCP(Model Context Protocol) 서버를 연결하면 Slack, GitHub, 데이터베이스 등 외부 서비스와도 연동할 수 있어요.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">Windows에서도 잘 되나요?</button>
+                    <div class="faq-answer">네! Windows, Mac, Linux 모두 지원해요. Windows에서는 먼저 <strong>Git for Windows</strong>를 설치한 후, PowerShell이나 명령 프롬프트(CMD)에서 사용할 수 있어요. 터미널이 어려우시면 <strong>데스크톱 앱</strong>을 다운받아서 일반 프로그램처럼 사용하거나, <a href='https://claude.ai/code' target='_blank' style='color:var(--primary);'>claude.ai/code</a>에서 웹 브라우저로 바로 사용할 수도 있어요.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">터미널 말고 다른 방법으로도 쓸 수 있나요?</button>
+                    <div class="faq-answer">네, 여러 방법이 있어요!<br><br><strong>🖥️ 데스크톱 앱:</strong> 일반 프로그램처럼 설치해서 사용. 시각적으로 변경사항을 확인하기 좋아요.<br><strong>🌐 웹 버전:</strong> <a href='https://claude.ai/code' target='_blank' style='color:var(--primary);'>claude.ai/code</a>에서 설치 없이 브라우저로 사용. 긴 작업을 걸어두고 나중에 확인할 수 있어요.<br><strong>📝 VS Code:</strong> VS Code 에디터 안에서 확장 프로그램으로 사용.<br><strong>📱 모바일:</strong> Claude iOS 앱에서도 Code 기능을 사용할 수 있어요.<br><br>모든 환경에서 CLAUDE.md 설정이 공유되니, 어디서 시작하든 같은 경험이에요.</div>
+                </div>
+            </div>
+
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">🙋 팀원 Q&A</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">팀원들이 실제로 궁금해한 질문과 답변이에요.</p>
+
+            <div class="faq-list">
+                <!-- 도현 질문들 -->
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">GitHub 관리는 어떻게 하나요? (도현)</button>
+                    <div class="faq-answer">
+                        Claude Code에서 GitHub를 관리하는 핵심 흐름이에요:<br><br>
+                        <strong>1. 저장소 연결</strong><br>
+                        GitHub에서 저장소를 만들고, Claude Code에게 <em>"이 폴더를 GitHub 저장소와 연결해줘"</em>라고 말하면 됩니다.<br><br>
+                        <strong>2. 일상적인 관리</strong><br>
+                        • <code>/commit</code> → 변경 사항을 의미 있는 메시지와 함께 저장<br>
+                        • <em>"GitHub에 푸시해줘"</em> → 원격에 동기화<br>
+                        • <em>"PR 만들어줘"</em> → Pull Request를 자동 생성<br><br>
+                        <strong>3. 브랜치 전략</strong><br>
+                        • <code>main</code> 브랜치는 완성된 버전만 유지<br>
+                        • 새 작업마다 브랜치를 만들어서 진행 → 완료 후 PR로 합치기<br>
+                        • Claude에게 <em>"feature/새기능 브랜치 만들어줘"</em>라고 말하면 끝<br><br>
+                        <strong>4. 유용한 습관</strong><br>
+                        • 작은 단위로 자주 커밋하기 (하루에 한 번보다 기능 단위로)<br>
+                        • 커밋 메시지는 Claude가 자동 생성해주니 <code>/commit</code> 활용<br>
+                        • <code>.gitignore</code>로 민감한 파일(비밀번호, API 키)은 제외
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">CLI와 GitHub를 통한 협업, 핵심 포인트는? (도현)</button>
+                    <div class="faq-answer">
+                        CLI(Claude Code)와 GitHub가 만나면 강력한 협업 워크플로우가 됩니다:<br><br>
+                        <strong>🔄 기본 협업 흐름</strong><br>
+                        ① 각자 브랜치에서 작업 → ② Claude Code로 커밋/푸시 → ③ GitHub에서 PR 생성 → ④ 리뷰 후 머지<br><br>
+                        <strong>📌 핵심 협업 포인트</strong><br>
+                        • <strong>PR(Pull Request)</strong>이 협업의 중심이에요. Claude에게 <em>"PR 만들어줘"</em>라고 하면 변경 내용 요약까지 자동으로 작성해줘요.<br>
+                        • <strong>코드 리뷰</strong>: GitHub PR에 댓글을 달아 서로 피드백. Claude에게 <em>"이 PR 리뷰해줘"</em>라고 요청하면 코드 분석도 가능해요.<br>
+                        • <strong>충돌 해결</strong>: 같은 파일을 동시에 수정하면 충돌이 나는데, Claude에게 <em>"충돌 해결해줘"</em>라고 말하면 도와줘요.<br><br>
+                        <strong>🎯 비개발자 팁</strong><br>
+                        • GitHub의 Issues 탭을 할일 목록처럼 활용하세요<br>
+                        • PR 설명에 "왜 이 변경을 했는지"를 적으면 팀 소통이 매끄러워져요<br>
+                        • Claude Code에서 <code>gh</code> 명령어로 이슈 생성, PR 확인 등 GitHub 작업을 터미널에서 바로 할 수 있어요
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">상황에 맞는 AI 툴은 어떻게 고르나요? (도현)</button>
+                    <div class="faq-answer">
+                        AI 도구마다 강점이 달라요. 상황별로 최적의 도구를 정리해 봤어요:<br><br>
+                        <strong>📝 문서/글 작성 → 웹 Claude (claude.ai)</strong><br>
+                        보고서, 이메일, 기획안 등 텍스트 중심 작업. 파일 업로드로 분석도 가능.<br><br>
+                        <strong>🛠️ 파일 작업/자동화 → Claude Code</strong><br>
+                        여러 파일을 동시에 처리, 반복 작업 자동화, 코드 생성/수정, 프로젝트 관리. 로컬 파일에 직접 접근 가능한 것이 핵심 차별점.<br><br>
+                        <strong>🎨 디자인/시각 자료 → Cursor, v0, Figma AI</strong><br>
+                        UI/UX 디자인, 프로토타이핑, 시각적 결과물이 필요할 때.<br><br>
+                        <strong>🔍 리서치/정보 수집 → ChatGPT, Perplexity</strong><br>
+                        최신 정보 검색, 시장 조사, 경쟁사 분석 등 웹 검색이 중요한 작업.<br><br>
+                        <strong>💡 선택 기준 요약</strong><br>
+                        • "파일을 직접 만들거나 수정해야 한다" → <strong>Claude Code</strong><br>
+                        • "대화하며 아이디어를 정리하고 싶다" → <strong>웹 Claude / ChatGPT</strong><br>
+                        • "시각적 결과물이 필요하다" → <strong>Cursor / v0</strong><br>
+                        • "최신 정보를 찾아야 한다" → <strong>Perplexity / ChatGPT</strong><br>
+                        • 하나만 고르기 어려우면 <strong>Claude Code + 웹 Claude</strong> 조합이 가장 범용적이에요
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">0 to 1 바이브코딩, 방향 잡는 팁은? (도현)</button>
+                    <div class="faq-answer">
+                        아무것도 없는 상태에서 프로젝트를 시작하는 "0 to 1" 바이브코딩 팁이에요:<br><br>
+                        <strong>1단계: 기획을 먼저 잡기</strong><br>
+                        코드보다 먼저 CLAUDE.md에 프로젝트의 목적, 대상 사용자, 핵심 기능을 정리하세요. Claude에게 <em>"이 아이디어를 CLAUDE.md로 정리해줘"</em>라고 요청하면 돼요.<br><br>
+                        <strong>2단계: 작게 시작하기</strong><br>
+                        처음부터 완벽한 걸 만들려 하지 마세요. 핵심 기능 하나만 먼저 동작하게 만드세요.<br>
+                        • 예: 웹사이트 → 메인 페이지 1개부터<br>
+                        • 예: 자동화 → 가장 반복적인 작업 1개부터<br><br>
+                        <strong>3단계: 대화하듯 만들기</strong><br>
+                        Claude에게 한 번에 모든 걸 시키지 마세요. 작은 단위로 요청 → 확인 → 다음 단계를 반복하세요.<br>
+                        • ❌ "쇼핑몰 전체를 만들어줘"<br>
+                        • ✅ "상품 목록 페이지 먼저 만들어줘" → "장바구니 기능 추가해줘" → ...<br><br>
+                        <strong>4단계: 자주 저장하기</strong><br>
+                        잘 되는 시점마다 <code>/commit</code>으로 저장하세요. 문제가 생기면 되돌릴 수 있어요.<br><br>
+                        <strong>5단계: 레퍼런스 활용</strong><br>
+                        "이 사이트처럼 만들어줘"라고 URL이나 스크린샷을 보여주면 Claude가 빠르게 방향을 잡아줘요. 말로 설명하기 어려운 디자인이나 기능은 시각적 레퍼런스가 효과적이에요.
+                    </div>
+                </div>
+
+                <!-- 동욱 질문 -->
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">기획자가 CLI로 수정할 때, 체크포인트로 변경 이력을 효율적으로 보는 방법은? (동욱)</button>
+                    <div class="faq-answer">
+                        Claude Code에는 자동 체크포인트 기능이 있어서 변경 이력을 쉽게 관리할 수 있어요:<br><br>
+                        <strong>🔖 체크포인트란?</strong><br>
+                        Claude Code가 파일을 수정할 때마다 자동으로 "이전 상태"를 기록해 둡니다. 게임의 자동 저장과 비슷해요.<br><br>
+                        <strong>⏪ 되돌리는 방법</strong><br>
+                        • <kbd>Esc</kbd>를 두 번 누르면 → 최근 체크포인트 목록이 나타남<br>
+                        • 원하는 시점을 선택하면 → 그 상태로 파일이 복원됨<br>
+                        • 체크포인트는 대화 중에 자동 생성되므로 별도 설정 불필요<br><br>
+                        <strong>📋 기획자를 위한 활용 워크플로우</strong><br>
+                        ① 기획자가 Claude Code로 수정 사항 요청 (예: <em>"이 페이지 문구를 이렇게 바꿔줘"</em>)<br>
+                        ② Claude가 수정 → 자동으로 체크포인트 생성<br>
+                        ③ 결과 확인 후 마음에 안 들면 → <kbd>Esc</kbd> × 2로 되돌리기<br>
+                        ④ 마음에 들면 → <code>/commit</code>으로 확정 저장<br><br>
+                        <strong>💡 더 체계적으로 관리하려면</strong><br>
+                        • <strong>Git 커밋을 단계마다 생성</strong>: 수정 완료될 때마다 <code>/commit</code>을 실행하면, 나중에 <em>"최근 커밋 이력 보여줘"</em>로 변경 내역을 한눈에 확인 가능<br>
+                        • <strong>브랜치 활용</strong>: 기획자용 브랜치(예: <code>planning/홈페이지-수정</code>)를 따로 만들면, 개발자가 나중에 PR을 통해 변경 내용을 한 번에 검토 가능<br>
+                        • <strong>커밋 메시지에 의도 남기기</strong>: Claude가 자동 생성한 커밋 메시지 외에도, <em>"커밋 메시지에 '기획팀 요청: 메인 문구 변경'이라고 적어줘"</em>라고 요청하면 나중에 누가 왜 바꿨는지 바로 알 수 있어요<br>
+                        • <em>"이 파일의 최근 변경 이력 보여줘"</em> 또는 <em>"지난 3일간 바뀐 파일 목록 알려줘"</em>로 히스토리를 쉽게 조회할 수 있어요
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-nav">
+                <a href="git.html" class="page-nav-link prev"><div class="page-nav-label">← 이전</div><div class="page-nav-title">Git 활용법</div></a>
+                <a href="resources.html" class="page-nav-link next"><div class="page-nav-label">다음 →</div><div class="page-nav-title">추천 자료</div></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><h3>Claude Code 가이드</h3><p>비개발자를 위한 Claude Code 학습 가이드.</p></div>
+            <div class="footer-links">
+                <h4>공식 자료</h4>
+                <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">공식 문서</a>
+                <a href="https://github.com/anthropics/claude-code" target="_blank">GitHub</a>
+                <a href="https://claude.ai" target="_blank">Claude.ai</a>
+            </div>
+            <div class="footer-links">
+                <h4>커뮤니티</h4>
+                <a href="https://discord.gg/anthropic" target="_blank">Discord</a>
+                <a href="https://github.com/anthropics/claude-code/issues" target="_blank">Q&A / 피드백</a>
+            </div>
+        </div>
+        <div class="footer-bottom">이 가이드는 Anthropic의 공식 문서를 바탕으로 비개발자를 위해 재구성한 학습 자료입니다.</div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

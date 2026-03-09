@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실전 프로젝트 — Claude Code 가이드</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">CC</div>가이드</a>
+            <ul class="nav-links">
+                <li><a href="intro.html">소개</a></li>
+                <li><a href="who.html">추천 대상</a></li>
+                <li><a href="terminal.html">터미널</a></li>
+                <li><a href="install.html">설치</a></li>
+                <li><a href="start.html">시작하기</a></li>
+                <li><a href="commands.html">명령어</a></li>
+                <li><a href="usecases.html">활용 사례</a></li>
+                <li><a href="claudemd.html">CLAUDE.md</a></li>
+                <li><a href="tips.html">꿀팁</a></li>
+                <li><a href="projects.html">실전 프로젝트</a></li>
+                <li><a href="git.html">Git</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="resources.html">추천 자료</a></li>
+                <li><a href="tools.html">유용한 도구</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="테마 변경">🌙</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="intro.html">소개</a><a href="who.html">추천 대상</a><a href="terminal.html">터미널</a><a href="install.html">설치</a>
+        <a href="start.html">시작하기</a><a href="commands.html">명령어</a><a href="usecases.html">활용 사례</a>
+        <a href="claudemd.html">CLAUDE.md</a><a href="tips.html">꿀팁</a><a href="projects.html">실전 프로젝트</a><a href="git.html">Git</a>
+        <a href="faq.html">FAQ</a>
+        <a href="resources.html">추천 자료</a>
+        <a href="tools.html">유용한 도구</a>
+    </div>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="breadcrumb"><a href="../index.html">홈</a><span class="sep">›</span><span>실전 프로젝트</span></div>
+            <div class="page-number">10</div>
+            <span class="section-label">🛠️ 실전</span>
+            <h1 class="section-title">실전 프로젝트</h1>
+            <p class="section-desc">배운 걸 직접 해보는 게 최고의 학습이에요. 프로젝트별 프롬프트를 따라 하면 결과물이 뚝딱 완성됩니다.</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="project-intro">
+            <div class="project-intro-icon">💡</div>
+            <div>
+                <h4>시작하기 전에</h4>
+                <p>각 프로젝트는 독립적이에요. 관심 있는 것부터 골라서 시작하세요. 프롬프트를 그대로 복사해서 Claude Code에 붙여넣기만 하면 됩니다. 중간에 결과가 마음에 안 들면 "이 부분을 이렇게 바꿔줘"라고 자유롭게 말하세요.</p>
+            </div>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="project-card">
+            <div class="project-card-header">
+                <div class="project-meta">
+                    <span class="project-badge beginner">입문</span>
+                    <span class="project-time">약 10분</span>
+                </div>
+                <span class="project-number">01</span>
+            </div>
+            <div class="project-card-body">
+                <h2>나만의 소개 페이지 만들기</h2>
+                <p class="project-desc">HTML과 CSS를 전혀 몰라도 괜찮아요. Claude Code에게 말만 하면 나만의 멋진 자기소개 웹페이지가 만들어집니다.</p>
+
+                <div class="project-learn">
+                    <h4>이런 걸 배워요</h4>
+                    <ul>
+                        <li>Claude Code로 파일을 생성하는 방법</li>
+                        <li>결과물을 확인하고 수정 요청하는 방법</li>
+                        <li>여러 파일로 구성된 프로젝트 다루기</li>
+                    </ul>
+                </div>
+
+                <div class="project-steps">
+                    <div class="project-step">
+                        <div class="project-step-num">1</div>
+                        <div class="project-step-content">
+                            <h4>프로젝트 폴더 만들기</h4>
+                            <p>터미널에서 작업할 폴더를 만들고 Claude Code를 시작하세요.</p>
+                            <div class="code-block">
+                                <code>mkdir my-profile && cd my-profile && claude</code>
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-step">
+                        <div class="project-step-num">2</div>
+                        <div class="project-step-content">
+                            <h4>소개 페이지 생성 요청</h4>
+                            <p>아래 프롬프트를 복사해서 Claude Code에 입력하세요. 이름과 내용은 자유롭게 바꾸세요.</p>
+                            <div class="usecase-prompt">
+                                <div class="usecase-prompt-label">프롬프트</div>
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>나의 자기소개 웹페이지를 만들어줘.
+
+이름: 김민수
+직업: 마케팅 매니저
+소개: 디지털 마케팅 5년차. 데이터 기반 의사결정을 좋아합니다.
+스킬: 콘텐츠 마케팅, SNS 운영, 데이터 분석, 프로젝트 관리
+이메일: minsu@example.com
+
+요구사항:
+- 깔끔하고 모던한 디자인
+- 다크/라이트 테마 전환 버튼
+- 모바일에서도 잘 보이게
+- index.html 한 파일로 만들어줘 (CSS 포함)</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-step">
+                        <div class="project-step-num">3</div>
+                        <div class="project-step-content">
+                            <h4>결과 확인하고 수정하기</h4>
+                            <p>생성된 파일을 브라우저에서 열어보고, 마음에 안 드는 부분을 수정 요청하세요.</p>
+                            <div class="usecase-prompt">
+                                <div class="usecase-prompt-label">수정 프롬프트 예시</div>
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>방금 만든 페이지에서 다음을 수정해줘:
+- 배경색을 좀 더 따뜻한 톤으로
+- 프로필 섹션에 애니메이션 효과 추가
+- 하단에 "문의하기" 버튼 추가</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-result">
+                    <span class="project-result-label">완성 결과물</span>
+                    <p>나만의 자기소개 웹페이지가 완성돼요. <code>index.html</code> 파일을 더블클릭하면 브라우저에서 바로 확인할 수 있어요.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+            <div class="project-card-header">
+                <div class="project-meta">
+                    <span class="project-badge beginner">입문</span>
+                    <span class="project-time">약 10분</span>
+                </div>
+                <span class="project-number">02</span>
+            </div>
+            <div class="project-card-body">
+                <h2>CSV 데이터 자동 분석기</h2>
+                <p class="project-desc">엑셀로 내보낸 CSV 파일을 Claude Code에 넘기면, 자동으로 분석하고 보기 좋은 보고서를 만들어줘요.</p>
+
+                <div class="project-learn">
+                    <h4>이런 걸 배워요</h4>
+                    <ul>
+                        <li>Claude Code로 데이터 파일 읽고 분석하기</li>
+                        <li>분석 결과를 보고서로 자동 생성하기</li>
+                        <li>차트가 포함된 시각적 결과물 만들기</li>
+                    </ul>
+                </div>
+
+                <div class="project-steps">
+                    <div class="project-step">
+                        <div class="project-step-num">1</div>
+                        <div class="project-step-content">
+                            <h4>샘플 데이터 준비하기</h4>
+                            <p>분석할 CSV 파일이 없다면, Claude Code에게 샘플을 만들어달라고 하세요.</p>
+                            <div class="usecase-prompt">
+                                <div class="usecase-prompt-label">프롬프트</div>
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>연습용 매출 데이터 CSV 파일을 만들어줘:
+- 기간: 2025년 1월~3월 (3개월)
+- 컬럼: 날짜, 제품명, 카테고리, 판매수량, 단가, 매출액
+- 제품: 노트북, 키보드, 마우스, 모니터, 헤드셋
+- 현실적인 숫자로 약 100행 정도
+- sales_data.csv로 저장</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-step">
+                        <div class="project-step-num">2</div>
+                        <div class="project-step-content">
+                            <h4>데이터 분석 요청하기</h4>
+                            <p>준비된 CSV 파일을 분석해달라고 요청하세요.</p>
+                            <div class="usecase-prompt">
+                                <div class="usecase-prompt-label">프롬프트</div>
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>sales_data.csv를 분석해서 보고서를 만들어줘:
+
+1. 전체 요약
+   - 총 매출, 총 판매 수량, 평균 객단가
+
+2. 월별 분석
+   - 월별 매출 추이와 성장률
+
+3. 제품별 분석
+   - 제품별 매출 순위
+   - 가장 많이 팔린 제품 TOP 3
+
+4. 카테고리별 분석
+   - 카테고리별 매출 비중
+
+5. 인사이트 & 제안
+   - 눈에 띄는 패턴
+   - 다음 분기 전략 제안
+
+보고서를 sales_report.md로 저장해줘</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-step">
+                        <div class="project-step-num">3</div>
+                        <div class="project-step-content">
+                            <h4>시각적 대시보드 만들기</h4>
+                            <p>분석 결과를 한눈에 볼 수 있는 HTML 대시보드도 만들어보세요.</p>
+                            <div class="usecase-prompt">
+                                <div class="usecase-prompt-label">프롬프트</div>
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>방금 분석한 sales_data.csv 결과를
+보기 좋은 HTML 대시보드로 만들어줘:
+- Chart.js로 차트 포함
+- 월별 매출 추이 (라인 차트)
+- 제품별 매출 비교 (바 차트)
+- 카테고리별 비중 (도넛 차트)
+- 주요 KPI 카드 (총매출, 성장률 등)
+- dashboard.html로 저장</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-result">
+                    <span class="project-result-label">완성 결과물</span>
+                    <p>마크다운 보고서(<code>sales_report.md</code>)와 인터랙티브 대시보드(<code>dashboard.html</code>)가 완성돼요.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+            <div class="project-card-header">
+                <div class="project-meta">
+                    <span class="project-badge intermediate">중급</span>
+                    <span class="project-time">약 15분</span>
+                </div>
+                <span class="project-number">03</span>
+            </div>
+            <div class="project-card-body">
+                <h2>업무 자동화 도구 만들기</h2>
+                <p class="project-desc">반복적인 파일 정리, 이름 변경, 데이터 변환 같은 작업을 한 번에 처리하는 자동화 스크립트를 만들어봐요.</p>
+
+                <div class="project-learn">
+                    <h4>이런 걸 배워요</h4>
+                    <ul>
+                        <li>자동화 스크립트의 개념 이해하기</li>
+                        <li>CLAUDE.md로 프로젝트 설정 관리하기</li>
+                        <li>반복 작업을 한 번에 처리하는 방법</li>
+                    </ul>
+                </div>
+
+                <div class="project-steps">
+                    <div class="project-step">
+                        <div class="project-step-num">1</div>
+                        <div class="project-step-content">
+                            <h4>CLAUDE.md 설정하기</h4>
+                            <p>프로젝트 성격을 알려주는 CLAUDE.md를 먼저 만드세요.</p>
+                            <div class="usecase-prompt">
+                                <div class="usecase-prompt-label">프롬프트</div>
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>이 프로젝트의 CLAUDE.md를 만들어줘:
+
+프로젝트: 업무 자동화 도구 모음
+목적: 비개발자가 자주 하는 반복 작업을 자동화
+언어: Python (초보자도 이해할 수 있게)
+원칙:
+- 모든 스크립트에 한글 주석 달기
+- 실행 전 사용자 확인 받기
+- 실행 결과를 로그 파일에 기록</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-step">
+                        <div class="project-step-num">2</div>
+                        <div class="project-step-content">
+                            <h4>파일 정리 스크립트 만들기</h4>
+                            <p>다운로드 폴더처럼 어질러진 폴더를 자동 정리하는 스크립트를 만드세요.</p>
+                            <div class="usecase-prompt">
+                                <div class="usecase-prompt-label">프롬프트</div>
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>파일 자동 정리 스크립트를 만들어줘:
+
+기능:
+- 지정한 폴더의 파일을 확장자별로 분류
+  - 이미지(.jpg, .png, .gif) → images/
+  - 문서(.pdf, .docx, .xlsx) → documents/
+  - 동영상(.mp4, .mov) → videos/
+  - 기타 → others/
+- 실행하면 먼저 "이렇게 정리됩니다" 미리보기 출력
+- 사용자가 Y를 누르면 실행
+- 정리 결과를 organize_log.txt에 기록
+
+organize_files.py로 저장해줘</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-step">
+                        <div class="project-step-num">3</div>
+                        <div class="project-step-content">
+                            <h4>이미지 일괄 이름 변경 스크립트</h4>
+                            <p>사진 파일 이름을 규칙에 맞게 일괄 변경하는 도구도 추가해보세요.</p>
+                            <div class="usecase-prompt">
+                                <div class="usecase-prompt-label">프롬프트</div>
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>이미지 파일 이름을 일괄 변경하는 스크립트를 만들어줘:
+
+기능:
+- 지정 폴더의 이미지 파일들을 찾기
+- "프로젝트명_날짜_001" 형식으로 이름 변경
+  (예: meeting_20250309_001.jpg)
+- 변경 전/후 이름을 미리보기로 보여주기
+- 사용자 확인 후 실행
+- 원본 이름 → 새 이름 매핑을 CSV로 기록
+
+rename_images.py로 저장해줘</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-result">
+                    <span class="project-result-label">완성 결과물</span>
+                    <p>파일 정리 스크립트와 이름 변경 스크립트가 완성돼요. 터미널에서 <code>python organize_files.py</code>로 바로 실행할 수 있어요.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+            <div class="project-card-header">
+                <div class="project-meta">
+                    <span class="project-badge intermediate">중급</span>
+                    <span class="project-time">약 20분</span>
+                </div>
+                <span class="project-number">04</span>
+            </div>
+            <div class="project-card-body">
+                <h2>팀 회의록 관리 시스템</h2>
+                <p class="project-desc">회의록을 입력하면 자동으로 정리하고, 액션 아이템을 추출하고, 지난 회의록을 검색할 수 있는 시스템을 만들어봐요.</p>
+
+                <div class="project-learn">
+                    <h4>이런 걸 배워요</h4>
+                    <ul>
+                        <li>여러 기능이 연결된 시스템 만들기</li>
+                        <li>템플릿 활용과 데이터 축적 관리</li>
+                        <li>Claude Code로 복잡한 요구사항 전달하기</li>
+                    </ul>
+                </div>
+
+                <div class="project-steps">
+                    <div class="project-step">
+                        <div class="project-step-num">1</div>
+                        <div class="project-step-content">
+                            <h4>프로젝트 구조 만들기</h4>
+                            <p>회의록 관리에 필요한 폴더 구조와 템플릿을 먼저 만드세요.</p>
+                            <div class="usecase-prompt">
+                                <div class="usecase-prompt-label">프롬프트</div>
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>회의록 관리 시스템 프로젝트를 만들어줘:
+
+폴더 구조:
+meeting-manager/
+├── templates/       ← 회의록 템플릿
+├── meetings/        ← 정리된 회의록 저장
+├── action-items/    ← 추출된 액션 아이템
+└── CLAUDE.md        ← 프로젝트 설정
+
+CLAUDE.md에는:
+- 회의록 정리 형식 (참석자, 안건, 결정사항, 액션아이템)
+- 액션아이템 형식 (담당자, 내용, 기한, 상태)
+- 파일 이름 규칙: YYYY-MM-DD_회의명.md
+
+회의록 템플릿도 templates/에 만들어줘</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-step">
+                        <div class="project-step-num">2</div>
+                        <div class="project-step-content">
+                            <h4>회의록 정리 실습하기</h4>
+                            <p>샘플 회의 내용을 넣고 자동 정리를 시켜보세요.</p>
+                            <div class="usecase-prompt">
+                                <div class="usecase-prompt-label">프롬프트</div>
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>다음 회의 내용을 정리해줘:
+
+날짜: 2025년 3월 10일 오후 2시
+참석자: 김팀장, 이대리, 박사원
+주제: Q2 마케팅 캠페인 기획
+
+내용:
+김팀장이 Q1 결과를 공유함. SNS 광고 전환율이 3.2%로
+목표 대비 20% 초과 달성. 이대리가 Q2에는 인플루언서
+마케팅을 병행하자고 제안. 예산은 500만원 범위에서.
+박사원이 인플루언서 리스트를 다음 주 금요일까지
+정리하기로 함. 김팀장은 Q2 예산안을 수요일까지 작성.
+다음 회의는 3월 17일로 정함.
+
+CLAUDE.md에 정한 형식대로 정리하고
+meetings/에 저장해줘.
+액션 아이템도 추출해서 action-items/에 저장해줘.</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-step">
+                        <div class="project-step-num">3</div>
+                        <div class="project-step-content">
+                            <h4>회의록 검색 및 요약 페이지</h4>
+                            <p>축적된 회의록을 한눈에 볼 수 있는 요약 페이지를 만드세요.</p>
+                            <div class="usecase-prompt">
+                                <div class="usecase-prompt-label">프롬프트</div>
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>meetings/ 폴더의 모든 회의록과
+action-items/ 폴더의 모든 액션 아이템을 읽어서
+다음을 만들어줘:
+
+1. 전체 회의 요약 (overview.md)
+   - 회의 목록 (날짜, 주제, 참석자)
+   - 미완료 액션 아이템 현황
+   - 주요 결정 사항 타임라인
+
+2. HTML 대시보드 (dashboard.html)
+   - 회의 일정 캘린더 뷰
+   - 액션 아이템 진행 상태
+   - 담당자별 할 일 목록</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-result">
+                    <span class="project-result-label">완성 결과물</span>
+                    <p>체계적인 회의록 관리 시스템이 완성돼요. 앞으로 회의할 때마다 Claude Code에게 정리를 맡기면 됩니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-next-tip">
+            <h3>다음은 뭘 만들어볼까요?</h3>
+            <p>이 프로젝트들을 완성했다면, 이제 자신만의 아이디어로 도전해보세요. Claude Code에게 이렇게 말하면 돼요:</p>
+            <div class="usecase-prompt" style="border-radius: var(--radius-md); margin-top: 16px;">
+                <div class="usecase-prompt-label">프롬프트</div>
+                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                <code>내가 [하고 싶은 것]을 하고 싶은데,
+어떤 방식으로 만들 수 있을지 제안해줘.
+비개발자도 이해할 수 있게 설명해줘.</code>
+            </div>
+        </div>
+
+        <div class="page-nav">
+            <a href="tips.html" class="page-nav-link prev"><div class="page-nav-label">← 이전</div><div class="page-nav-title">꿀팁 모음</div></a>
+            <a href="git.html" class="page-nav-link next"><div class="page-nav-label">다음 →</div><div class="page-nav-title">Git 활용법</div></a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><h3>Claude Code 가이드</h3><p>비개발자를 위한 Claude Code 학습 가이드.</p></div>
+            <div class="footer-links">
+                <h4>공식 자료</h4>
+                <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">공식 문서</a>
+                <a href="https://github.com/anthropics/claude-code" target="_blank">GitHub</a>
+                <a href="https://claude.ai" target="_blank">Claude.ai</a>
+            </div>
+            <div class="footer-links">
+                <h4>커뮤니티</h4>
+                <a href="https://discord.gg/anthropic" target="_blank">Discord</a>
+                <a href="https://github.com/anthropics/claude-code/issues" target="_blank">Q&A / 피드백</a>
+            </div>
+        </div>
+        <div class="footer-bottom">이 가이드는 Anthropic의 공식 문서를 바탕으로 비개발자를 위해 재구성한 학습 자료입니다.</div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

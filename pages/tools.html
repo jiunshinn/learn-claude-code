@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유용한 도구 소개 — Claude Code 가이드</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">CC</div>가이드</a>
+            <ul class="nav-links">
+                <li><a href="intro.html">소개</a></li>
+                <li><a href="who.html">추천 대상</a></li>
+                <li><a href="terminal.html">터미널</a></li>
+                <li><a href="install.html">설치</a></li>
+                <li><a href="start.html">시작하기</a></li>
+                <li><a href="commands.html">명령어</a></li>
+                <li><a href="usecases.html">활용 사례</a></li>
+                <li><a href="claudemd.html">CLAUDE.md</a></li>
+                <li><a href="tips.html">꿀팁</a></li>
+                <li><a href="projects.html">실전 프로젝트</a></li>
+                <li><a href="git.html">Git</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="resources.html">추천 자료</a></li>
+                <li><a href="tools.html">유용한 도구</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="테마 변경">🌙</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="intro.html">소개</a><a href="who.html">추천 대상</a><a href="terminal.html">터미널</a><a href="install.html">설치</a>
+        <a href="start.html">시작하기</a><a href="commands.html">명령어</a><a href="usecases.html">활용 사례</a>
+        <a href="claudemd.html">CLAUDE.md</a><a href="tips.html">꿀팁</a><a href="projects.html">실전 프로젝트</a><a href="git.html">Git</a><a href="faq.html">FAQ</a>
+        <a href="resources.html">추천 자료</a><a href="tools.html">유용한 도구</a>
+    </div>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="breadcrumb"><a href="../index.html">홈</a><span class="sep">›</span><span>유용한 도구 소개</span></div>
+            <div class="page-number">14</div>
+            <span class="section-label">🧰 유용한 도구</span>
+            <h1 class="section-title">유용한 도구 소개</h1>
+            <p class="section-desc">Claude Code와 함께 쓰면 생산성이 올라가는 도구들을 소개합니다.</p>
+        </div>
+    </div>
+
+    <section style="padding-top:40px;">
+        <div class="container">
+
+            <!-- 카테고리 1: 터미널 도구 -->
+            <div class="claudemd-analogy reveal" style="margin-bottom: 32px;">
+                <h3>🖥️ 터미널 도구</h3>
+                <p>Claude Code는 터미널에서 동작해요. 이 도구들을 함께 쓰면 터미널 작업이 훨씬 편해집니다.</p>
+            </div>
+
+            <div class="tips-grid">
+                <div class="tip-card reveal">
+                    <div class="tip-num">01</div>
+                    <h3>tmux — 터미널 분할기</h3>
+                    <p>하나의 터미널 창을 여러 개로 나눠서 쓸 수 있어요. Claude Code를 실행하면서 다른 창에서 파일을 확인하거나, 서버 로그를 동시에 볼 수 있습니다.</p>
+                    <div class="code-block" style="margin-top: 12px;">
+                        <code>brew install tmux</code>
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    </div>
+                    <div class="tip" style="margin-top: 12px;">
+                        <code>Ctrl+B</code> 후 <code>"</code>로 화면 분할, <code>%</code>로 세로 분할. 세션이 유지되어 SSH 연결이 끊겨도 작업이 사라지지 않아요.
+                    </div>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-num">02</div>
+                    <h3>gh CLI — GitHub 명령어 도구</h3>
+                    <p>GitHub의 거의 모든 기능을 터미널에서 사용할 수 있어요. PR 생성, 이슈 관리, 저장소 클론까지 브라우저 없이 가능합니다.</p>
+                    <div class="code-block" style="margin-top: 12px;">
+                        <code>brew install gh && gh auth login</code>
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    </div>
+                    <div class="tip" style="margin-top: 12px;">
+                        <code>gh repo clone 사용자/저장소</code>, <code>gh pr create</code>, <code>gh issue list</code> 등 자주 쓰는 명령어만 알면 충분해요.
+                    </div>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-num">03</div>
+                    <h3>iTerm2 / Windows Terminal</h3>
+                    <p>기본 터미널보다 훨씬 편한 터미널 앱이에요. 탭 분할, 검색, 자동완성, 테마 변경 등 편의 기능이 풍부합니다.</p>
+                    <div class="code-block" style="margin-top: 12px;">
+                        <code>brew install --cask iterm2</code>
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    </div>
+                    <div class="tip" style="margin-top: 12px;">
+                        Mac은 iTerm2, Windows는 Microsoft Store에서 Windows Terminal을 설치하세요.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 카테고리 2: 에디터 & 개발 환경 -->
+            <div class="claudemd-analogy reveal" style="margin-top: 48px; margin-bottom: 32px;">
+                <h3>✏️ 에디터 & 개발 환경</h3>
+                <p>Claude Code가 만든 파일을 보거나 수정할 때 쓰면 좋은 도구들이에요.</p>
+            </div>
+
+            <div class="tips-grid">
+                <div class="tip-card reveal">
+                    <div class="tip-num">04</div>
+                    <h3>VS Code — 코드 에디터</h3>
+                    <p>Microsoft의 무료 코드 에디터. Claude Code와 함께 파일을 보고 편집할 때 유용해요. 확장 프로그램이 풍부하고, 터미널도 내장되어 있어요.</p>
+                    <div class="code-block" style="margin-top: 12px;">
+                        <code>brew install --cask visual-studio-code</code>
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    </div>
+                    <div class="tip" style="margin-top: 12px;">
+                        터미널에서 <code>code .</code>을 입력하면 현재 폴더를 VS Code로 열 수 있어요.
+                    </div>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-num">05</div>
+                    <h3>Cursor — AI 코드 에디터</h3>
+                    <p>AI 기능이 내장된 코드 에디터. VS Code를 기반으로 만들어져서 익숙하고, Claude Code와 병행해서 쓰면 시너지가 커요.</p>
+                    <div class="tip" style="margin-top: 12px;">
+                        Claude Code로 큰 작업을 하고, Cursor로 세부 수정을 하는 워크플로우가 효율적이에요.
+                    </div>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-num">06</div>
+                    <h3>Homebrew / Chocolatey</h3>
+                    <p>프로그램 설치를 한 줄 명령어로 해결하는 패키지 매니저. Node.js, Python 등 필수 도구 설치에 유용해요.</p>
+                    <div class="code-block" style="margin-top: 12px;">
+                        <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code>
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    </div>
+                    <div class="tip" style="margin-top: 12px;">
+                        Mac은 Homebrew, Windows는 Chocolatey를 사용하세요. <code>brew install 패키지명</code>으로 간편 설치.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 카테고리 3: 데이터 & 생산성 -->
+            <div class="claudemd-analogy reveal" style="margin-top: 48px; margin-bottom: 32px;">
+                <h3>🚀 데이터 & 생산성</h3>
+                <p>Claude Code와 함께 쓰면 작업 효율이 크게 올라가는 도구들이에요.</p>
+            </div>
+
+            <div class="tips-grid">
+                <div class="tip-card reveal">
+                    <div class="tip-num">07</div>
+                    <h3>jq — JSON 데이터 뷰어</h3>
+                    <p>JSON 데이터를 터미널에서 보기 좋게 정리해 줘요. API 응답을 분석하거나 설정 파일을 확인할 때 유용합니다.</p>
+                    <div class="code-block" style="margin-top: 12px;">
+                        <code>brew install jq</code>
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    </div>
+                    <div class="tip" style="margin-top: 12px;">
+                        <code>cat data.json | jq '.'</code>으로 JSON을 예쁘게 출력. <code>jq '.name'</code>으로 특정 필드만 추출 가능.
+                    </div>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-num">08</div>
+                    <h3>MCP 서버 — 기능 확장 플러그인</h3>
+                    <p>Claude Code의 기능을 확장하는 플러그인 시스템이에요. 웹 검색, 데이터베이스 연결, 파일 시스템 접근 등 다양한 기능을 추가할 수 있습니다.</p>
+                    <div class="tip" style="margin-top: 12px;">
+                        Claude Code 설정에서 MCP 서버를 연결하면, Claude가 외부 도구와 직접 소통할 수 있어요.
+                    </div>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-num">09</div>
+                    <h3>GitHub Desktop — Git GUI</h3>
+                    <p>Git을 GUI로 쉽게 관리할 수 있어요. 터미널 명령어 없이 커밋, 브랜치, PR을 시각적으로 관리할 수 있습니다.</p>
+                    <div class="code-block" style="margin-top: 12px;">
+                        <code>brew install --cask github</code>
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    </div>
+                    <div class="tip" style="margin-top: 12px;">
+                        gh CLI가 터미널 중심이라면, GitHub Desktop은 시각적으로 변경사항을 확인하고 싶을 때 좋아요.
+                    </div>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-num">10</div>
+                    <h3>Wispr Flow — 음성 딕테이션</h3>
+                    <p>말로 하면 텍스트로 바꿔주는 음성 입력 도구예요. Claude Code에 긴 프롬프트를 타이핑하는 대신 말로 설명하면 훨씬 빠르고 편합니다.</p>
+                    <div class="tip" style="margin-top: 12px;">
+                        어디서든 음성으로 텍스트 입력이 가능해요. Claude Code 프롬프트 작성, 문서 작성 등 타이핑이 많은 작업에 특히 유용합니다.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 조합 추천 -->
+            <div class="project-next-tip reveal" style="margin-top: 48px;">
+                <h3>💡 추천 조합</h3>
+                <p>
+                    <strong>기본 세트:</strong> iTerm2 + tmux + Claude Code — 터미널 하나로 모든 걸 해결하는 조합이에요.<br>
+                    <strong>개발 세트:</strong> VS Code + gh CLI + Claude Code — 코드를 보면서 Claude Code로 작업하고, gh로 바로 PR까지.<br>
+                    <strong>풀 세트:</strong> Cursor + tmux + gh CLI + jq + Claude Code — 가장 강력한 조합. 모든 작업을 효율적으로 처리할 수 있어요.
+                </p>
+            </div>
+
+            <div class="page-nav">
+                <a href="resources.html" class="page-nav-link prev"><div class="page-nav-label">← 이전</div><div class="page-nav-title">추천 자료</div></a>
+                <a href="../index.html" class="page-nav-link next"><div class="page-nav-label">처음으로 →</div><div class="page-nav-title">홈</div></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><h3>Claude Code 가이드</h3><p>비개발자를 위한 Claude Code 학습 가이드.</p></div>
+            <div class="footer-links">
+                <h4>공식 자료</h4>
+                <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">공식 문서</a>
+                <a href="https://github.com/anthropics/claude-code" target="_blank">GitHub</a>
+                <a href="https://claude.ai" target="_blank">Claude.ai</a>
+            </div>
+            <div class="footer-links">
+                <h4>커뮤니티</h4>
+                <a href="https://discord.gg/anthropic" target="_blank">Discord</a>
+                <a href="https://github.com/anthropics/claude-code/issues" target="_blank">Q&A / 피드백</a>
+            </div>
+        </div>
+        <div class="footer-bottom">이 가이드는 Anthropic의 공식 문서를 바탕으로 비개발자를 위해 재구성한 학습 자료입니다.</div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

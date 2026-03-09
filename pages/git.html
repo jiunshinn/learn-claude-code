@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git 활용법 — Claude Code 가이드</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">CC</div>가이드</a>
+            <ul class="nav-links">
+                <li><a href="intro.html">소개</a></li>
+                <li><a href="who.html">추천 대상</a></li>
+                <li><a href="terminal.html">터미널</a></li>
+                <li><a href="install.html">설치</a></li>
+                <li><a href="start.html">시작하기</a></li>
+                <li><a href="commands.html">명령어</a></li>
+                <li><a href="usecases.html">활용 사례</a></li>
+                <li><a href="claudemd.html">CLAUDE.md</a></li>
+                <li><a href="tips.html">꿀팁</a></li>
+                <li><a href="projects.html">실전 프로젝트</a></li>
+                <li><a href="git.html">Git</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="resources.html">추천 자료</a></li>
+                <li><a href="tools.html">유용한 도구</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="테마 변경">🌙</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="intro.html">소개</a><a href="who.html">추천 대상</a><a href="terminal.html">터미널</a><a href="install.html">설치</a>
+        <a href="start.html">시작하기</a><a href="commands.html">명령어</a><a href="usecases.html">활용 사례</a>
+        <a href="claudemd.html">CLAUDE.md</a><a href="tips.html">꿀팁</a><a href="projects.html">실전 프로젝트</a><a href="git.html">Git</a><a href="faq.html">FAQ</a>
+        <a href="resources.html">추천 자료</a>
+        <a href="tools.html">유용한 도구</a>
+    </div>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="breadcrumb"><a href="../index.html">홈</a><span class="sep">›</span><span>Git 활용법</span></div>
+            <div class="page-number">11</div>
+            <span class="section-label">🔀 Git</span>
+            <h1 class="section-title">Git 활용법</h1>
+            <p class="section-desc">파일의 변경 이력을 관리하는 Git. 어렵게 느껴져도 Claude Code와 함께라면 쉬워요.</p>
+        </div>
+    </div>
+
+    <section style="padding-top:40px;">
+        <div class="container">
+
+            <div class="claudemd-analogy reveal">
+                <h3>📓 비유로 이해하기</h3>
+                <p>문서 작업을 할 때 "보고서_최종.docx", "보고서_최종_진짜최종.docx", "보고서_최종_수정_v3.docx"처럼 파일을 복사해본 적 있나요? <strong>Git은 이런 버전 관리를 자동으로 해주는 도구</strong>예요. 파일을 하나만 유지하면서도, 언제 누가 무엇을 바꿨는지 전부 기록해 줍니다. 실수로 파일을 망쳐도 이전 버전으로 쉽게 되돌릴 수 있어요.</p>
+            </div>
+
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:48px;">🧩 핵심 개념 4가지</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">이것만 알면 Git의 80%를 이해한 거예요.</p>
+
+            <div class="what-grid reveal">
+                <div class="what-card">
+                    <div class="what-card-icon">📁</div>
+                    <h3>저장소 (Repository)</h3>
+                    <p>Git이 변경 이력을 추적하는 프로젝트 폴더예요. <code>git init</code> 명령으로 만들거나, GitHub에서 가져올 수 있어요.</p>
+                    <ul class="features-list">
+                        <li>프로젝트의 모든 파일과 변경 기록이 여기에</li>
+                        <li>로컬(내 컴퓨터)과 원격(GitHub)이 있음</li>
+                    </ul>
+                </div>
+                <div class="what-card">
+                    <div class="what-card-icon">💾</div>
+                    <h3>커밋 (Commit)</h3>
+                    <p>"이 시점을 기억해줘"라고 저장하는 거예요. 게임의 세이브 포인트와 같아요.</p>
+                    <ul class="features-list">
+                        <li>변경 내용 + 설명 메시지를 함께 기록</li>
+                        <li>언제든 이 시점으로 되돌아갈 수 있음</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="what-grid reveal" style="margin-top:20px;">
+                <div class="what-card">
+                    <div class="what-card-icon">🌿</div>
+                    <h3>브랜치 (Branch)</h3>
+                    <p>원본을 건드리지 않고 새로운 작업을 시도하는 "복사본 공간"이에요.</p>
+                    <ul class="features-list">
+                        <li>실험적인 변경을 안전하게 시도 가능</li>
+                        <li>완성되면 원본에 합칠 수 있음 (Merge)</li>
+                    </ul>
+                </div>
+                <div class="what-card">
+                    <div class="what-card-icon">☁️</div>
+                    <h3>푸시 / 풀 (Push / Pull)</h3>
+                    <p>내 컴퓨터의 변경 사항을 GitHub에 올리거나(Push), GitHub의 변경 사항을 가져오는(Pull) 거예요.</p>
+                    <ul class="features-list">
+                        <li>Push: 내 작업을 팀과 공유</li>
+                        <li>Pull: 다른 사람의 변경 사항을 받아오기</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">🤖 Claude Code가 Git을 쉽게 만들어줘요</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">복잡한 Git 명령어를 외울 필요 없어요. Claude에게 말로 시키면 돼요.</p>
+
+            <div class="tips-grid">
+                <div class="tip-card reveal">
+                    <div class="tip-num">1</div>
+                    <h3>자동 커밋 메시지</h3>
+                    <p><code>/commit</code>을 사용하면 Claude가 변경 내용을 분석해서 의미 있는 커밋 메시지를 자동으로 작성해 줘요.</p>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-num">2</div>
+                    <h3>자연어로 Git 조작</h3>
+                    <p>"새 브랜치 만들어줘", "마지막 변경 사항 되돌려줘" 같은 일상 표현으로 Git을 다룰 수 있어요.</p>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-num">3</div>
+                    <h3>충돌 해결 도우미</h3>
+                    <p>여러 사람이 같은 파일을 수정해서 충돌이 나면, Claude가 차이점을 분석하고 해결 방법을 알려줘요.</p>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-num">4</div>
+                    <h3>변경 이력 검색</h3>
+                    <p>"이 파일이 마지막으로 언제 수정됐어?", "이 부분을 왜 바꿨는지 알려줘" 같은 질문도 가능해요.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">💬 이렇게 말해보세요</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">실제로 Claude Code에서 바로 사용할 수 있는 프롬프트예요.</p>
+
+            <div class="usecase-grid">
+                <div class="usecase-card reveal">
+                    <div class="usecase-card-top">
+                        <span class="usecase-emoji">🆕</span>
+                        <h3>Git 시작하기</h3>
+                        <p>새 프로젝트에 Git을 처음 설정할 때</p>
+                    </div>
+                    <div class="usecase-prompt">
+                        <span class="usecase-prompt-label">프롬프트</span>
+이 폴더에 Git 저장소를 초기화하고,
+.gitignore 파일도 만들어줘.
+Node.js 프로젝트야.</div>
+                </div>
+                <div class="usecase-card reveal">
+                    <div class="usecase-card-top">
+                        <span class="usecase-emoji">💾</span>
+                        <h3>변경 사항 저장하기</h3>
+                        <p>작업한 내용을 커밋으로 기록할 때</p>
+                    </div>
+                    <div class="usecase-prompt">
+                        <span class="usecase-prompt-label">프롬프트</span>
+지금까지 변경한 내용을 정리해서
+커밋 메시지와 함께 저장해줘.</div>
+                </div>
+                <div class="usecase-card reveal">
+                    <div class="usecase-card-top">
+                        <span class="usecase-emoji">🔍</span>
+                        <h3>변경 이력 확인하기</h3>
+                        <p>어떤 파일이 언제, 왜 바뀌었는지 알고 싶을 때</p>
+                    </div>
+                    <div class="usecase-prompt">
+                        <span class="usecase-prompt-label">프롬프트</span>
+최근 일주일간 이 프로젝트에서
+변경된 파일 목록을 보여줘.
+각 변경의 요약도 알려줘.</div>
+                </div>
+                <div class="usecase-card reveal">
+                    <div class="usecase-card-top">
+                        <span class="usecase-emoji">⏪</span>
+                        <h3>실수 되돌리기</h3>
+                        <p>잘못된 변경을 이전 상태로 복구할 때</p>
+                    </div>
+                    <div class="usecase-prompt">
+                        <span class="usecase-prompt-label">프롬프트</span>
+방금 수정한 config.json 파일을
+수정 전 상태로 되돌려줘.</div>
+                </div>
+                <div class="usecase-card reveal">
+                    <div class="usecase-card-top">
+                        <span class="usecase-emoji">🌿</span>
+                        <h3>브랜치로 안전하게 작업하기</h3>
+                        <p>원본을 유지하면서 새로운 기능을 시도할 때</p>
+                    </div>
+                    <div class="usecase-prompt">
+                        <span class="usecase-prompt-label">프롬프트</span>
+"new-design"이라는 브랜치를 만들어줘.
+여기서 스타일을 실험해볼 거야.</div>
+                </div>
+                <div class="usecase-card reveal">
+                    <div class="usecase-card-top">
+                        <span class="usecase-emoji">☁️</span>
+                        <h3>GitHub에 올리기</h3>
+                        <p>내 작업을 GitHub 원격 저장소에 공유할 때</p>
+                    </div>
+                    <div class="usecase-prompt">
+                        <span class="usecase-prompt-label">프롬프트</span>
+지금까지 작업한 내용을
+GitHub에 푸시해줘.</div>
+                </div>
+            </div>
+
+            <div class="analogy-box reveal" style="margin-top:48px;">
+                <h3>💡 비개발자를 위한 팁</h3>
+                <p>Git 명령어를 직접 외울 필요는 전혀 없어요! Claude Code에게 하고 싶은 일을 말로 설명하면, Claude가 알아서 올바른 Git 명령어를 실행해 줍니다. "커밋해줘", "되돌려줘", "브랜치 만들어줘"처럼 편하게 말하세요. 단, Claude가 실행하기 전에 무엇을 할지 설명해 줄 거예요 — 잘 읽어보고 승인하면 돼요.</p>
+            </div>
+
+            <div class="page-nav">
+                <a href="projects.html" class="page-nav-link prev"><div class="page-nav-label">← 이전</div><div class="page-nav-title">실전 프로젝트</div></a>
+                <a href="faq.html" class="page-nav-link next"><div class="page-nav-label">다음 →</div><div class="page-nav-title">자주 묻는 질문</div></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><h3>Claude Code 가이드</h3><p>비개발자를 위한 Claude Code 학습 가이드.</p></div>
+            <div class="footer-links">
+                <h4>공식 자료</h4>
+                <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">공식 문서</a>
+                <a href="https://github.com/anthropics/claude-code" target="_blank">GitHub</a>
+                <a href="https://claude.ai" target="_blank">Claude.ai</a>
+            </div>
+            <div class="footer-links">
+                <h4>커뮤니티</h4>
+                <a href="https://discord.gg/anthropic" target="_blank">Discord</a>
+                <a href="https://github.com/anthropics/claude-code/issues" target="_blank">Q&A / 피드백</a>
+            </div>
+        </div>
+        <div class="footer-bottom">이 가이드는 Anthropic의 공식 문서를 바탕으로 비개발자를 위해 재구성한 학습 자료입니다.</div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

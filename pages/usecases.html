@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실전 활용 사례 — Claude Code 가이드</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">CC</div>가이드</a>
+            <ul class="nav-links">
+                <li><a href="intro.html">소개</a></li>
+                <li><a href="who.html">추천 대상</a></li>
+                <li><a href="terminal.html">터미널</a></li>
+                <li><a href="install.html">설치</a></li>
+                <li><a href="start.html">시작하기</a></li>
+                <li><a href="commands.html">명령어</a></li>
+                <li><a href="usecases.html">활용 사례</a></li>
+                <li><a href="claudemd.html">CLAUDE.md</a></li>
+                <li><a href="tips.html">꿀팁</a></li>
+                <li><a href="projects.html">실전 프로젝트</a></li>
+                <li><a href="git.html">Git</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="resources.html">추천 자료</a></li>
+                <li><a href="tools.html">유용한 도구</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="테마 변경">🌙</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="intro.html">소개</a><a href="who.html">추천 대상</a><a href="terminal.html">터미널</a><a href="install.html">설치</a>
+        <a href="start.html">시작하기</a><a href="commands.html">명령어</a><a href="usecases.html">활용 사례</a>
+        <a href="claudemd.html">CLAUDE.md</a><a href="tips.html">꿀팁</a><a href="projects.html">실전 프로젝트</a><a href="git.html">Git</a><a href="faq.html">FAQ</a>
+        <a href="resources.html">추천 자료</a>
+        <a href="tools.html">유용한 도구</a>
+    </div>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="breadcrumb"><a href="../index.html">홈</a><span class="sep">›</span><span>실전 활용 사례</span></div>
+            <div class="page-number">07</div>
+            <span class="section-label">🎨 활용</span>
+            <h1 class="section-title">실전 활용 사례</h1>
+            <p class="section-desc">이런 것도 되나요? 네, 됩니다. 프롬프트를 복사해서 바로 써보세요.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="usecase-grid">
+            <div class="usecase-card">
+                <div class="usecase-card-top">
+                    <div class="usecase-emoji">🧾</div>
+                    <h3>경비 보고서 자동 생성</h3>
+                    <p>신용카드 내역 CSV를 넣으면, 카테고리별로 정리된 경비 보고서를 만들어줘요.</p>
+                </div>
+                <div class="usecase-prompt">
+                    <div class="usecase-prompt-label">프롬프트 예시</div>
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    <code>expenses.csv 파일을 읽어서 다음을 해줘:
+1. 날짜순으로 정렬
+2. 카테고리별로 분류 (식비, 교통, 숙박 등)
+3. 카테고리별 소계와 총합 계산
+4. expense_report.md 파일로 보고서 작성</code>
+                </div>
+            </div>
+
+            <div class="usecase-card">
+                <div class="usecase-card-top">
+                    <div class="usecase-emoji">🔍</div>
+                    <h3>경쟁사 분석 리포트</h3>
+                    <p>경쟁사 목록을 주면, 각 회사의 특징을 조사해서 비교표를 만들어줘요.</p>
+                </div>
+                <div class="usecase-prompt">
+                    <div class="usecase-prompt-label">프롬프트 예시</div>
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    <code>@competitors.md 파일에 있는 경쟁사 5개를
+다음 기준으로 비교 분석해줘:
+- 핵심 기능
+- 가격 정책
+- 타겟 고객
+- 장단점
+
+결과를 comparison_table.md로 저장해줘</code>
+                </div>
+            </div>
+
+            <div class="usecase-card">
+                <div class="usecase-card-top">
+                    <div class="usecase-emoji">📂</div>
+                    <h3>파일 정리 및 관리</h3>
+                    <p>어질러진 폴더를 종류별, 날짜별로 깔끔하게 정리해줘요.</p>
+                </div>
+                <div class="usecase-prompt">
+                    <div class="usecase-prompt-label">프롬프트 예시</div>
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    <code>Downloads 폴더를 정리해줘:
+- 이미지 → images/
+- 문서(PDF, DOC) → documents/
+- 스프레드시트 → spreadsheets/
+- 나머지 → others/
+각 폴더 안에서 날짜별로 하위 폴더도 만들어줘</code>
+                </div>
+            </div>
+
+            <div class="usecase-card">
+                <div class="usecase-card-top">
+                    <div class="usecase-emoji">📈</div>
+                    <h3>콘텐츠 성과 분석</h3>
+                    <p>SNS 게시물 데이터를 분석해서 인사이트를 뽑아줘요.</p>
+                </div>
+                <div class="usecase-prompt">
+                    <div class="usecase-prompt-label">프롬프트 예시</div>
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    <code>@instagram_data.csv를 분석해서:
+1. 가장 반응이 좋았던 게시물 TOP 10
+2. 요일별·시간대별 참여율 패턴
+3. 해시태그별 평균 도달 수
+4. 다음 달 콘텐츠 전략 제안
+
+결과를 content_report.md로 저장해줘</code>
+                </div>
+            </div>
+
+            <div class="usecase-card">
+                <div class="usecase-card-top">
+                    <div class="usecase-emoji">✉️</div>
+                    <h3>마케팅 뉴스레터 작성</h3>
+                    <p>업데이트 내용을 주면 뉴스레터 초안을 만들어줘요.</p>
+                </div>
+                <div class="usecase-prompt">
+                    <div class="usecase-prompt-label">프롬프트 예시</div>
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    <code>@updates.md 파일의 이번 달 업데이트 내용으로
+뉴스레터를 작성해줘:
+
+- 톤: 친근하고 전문적
+- 구조: 인사 → 주요 업데이트 3개 → CTA
+- 길이: 500자 내외
+- newsletter_march.md로 저장</code>
+                </div>
+            </div>
+
+            <div class="usecase-card">
+                <div class="usecase-card-top">
+                    <div class="usecase-emoji">📝</div>
+                    <h3>회의록 정리 및 액션 아이템 추출</h3>
+                    <p>회의록 텍스트를 넣으면 깔끔하게 정리하고 할 일을 추출해요.</p>
+                </div>
+                <div class="usecase-prompt">
+                    <div class="usecase-prompt-label">프롬프트 예시</div>
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    <code>@meeting_notes.txt를 정리해줘:
+1. 참석자 목록
+2. 주요 논의 사항 (3줄 요약)
+3. 결정 사항
+4. 액션 아이템 (담당자 + 기한)
+
+meeting_summary.md로 저장해줘</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-nav">
+            <a href="commands.html" class="page-nav-link prev"><div class="page-nav-label">← 이전</div><div class="page-nav-title">핵심 명령어 가이드</div></a>
+            <a href="claudemd.html" class="page-nav-link next"><div class="page-nav-label">다음 →</div><div class="page-nav-title">CLAUDE.md 이해하기</div></a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><h3>Claude Code 가이드</h3><p>비개발자를 위한 Claude Code 학습 가이드.</p></div>
+            <div class="footer-links">
+                <h4>공식 자료</h4>
+                <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">공식 문서</a>
+                <a href="https://github.com/anthropics/claude-code" target="_blank">GitHub</a>
+                <a href="https://claude.ai" target="_blank">Claude.ai</a>
+            </div>
+            <div class="footer-links">
+                <h4>커뮤니티</h4>
+                <a href="https://discord.gg/anthropic" target="_blank">Discord</a>
+                <a href="https://github.com/anthropics/claude-code/issues" target="_blank">Q&A / 피드백</a>
+            </div>
+        </div>
+        <div class="footer-bottom">이 가이드는 Anthropic의 공식 문서를 바탕으로 비개발자를 위해 재구성한 학습 자료입니다.</div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

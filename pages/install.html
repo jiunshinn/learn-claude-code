@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설치하기 — Claude Code 가이드</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">CC</div>가이드</a>
+            <ul class="nav-links">
+                <li><a href="intro.html">소개</a></li>
+                <li><a href="who.html">추천 대상</a></li>
+                <li><a href="terminal.html">터미널</a></li>
+                <li><a href="install.html">설치</a></li>
+                <li><a href="start.html">시작하기</a></li>
+                <li><a href="commands.html">명령어</a></li>
+                <li><a href="usecases.html">활용 사례</a></li>
+                <li><a href="claudemd.html">CLAUDE.md</a></li>
+                <li><a href="tips.html">꿀팁</a></li>
+                <li><a href="projects.html">실전 프로젝트</a></li>
+                <li><a href="git.html">Git</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="resources.html">추천 자료</a></li>
+                <li><a href="tools.html">유용한 도구</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="테마 변경">🌙</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="intro.html">소개</a><a href="who.html">추천 대상</a><a href="terminal.html">터미널</a><a href="install.html">설치</a>
+        <a href="start.html">시작하기</a><a href="commands.html">명령어</a><a href="usecases.html">활용 사례</a>
+        <a href="claudemd.html">CLAUDE.md</a><a href="tips.html">꿀팁</a><a href="projects.html">실전 프로젝트</a><a href="git.html">Git</a><a href="faq.html">FAQ</a>
+        <a href="resources.html">추천 자료</a>
+        <a href="tools.html">유용한 도구</a>
+    </div>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">홈</a>
+                <span class="sep">›</span>
+                <span>설치</span>
+            </div>
+            <div class="page-number">04</div>
+            <span class="section-label">🔧 설치</span>
+            <h1 class="section-title">설치하기</h1>
+            <p class="section-desc">5분이면 충분해요. 차근차근 따라해 보세요.</p>
+        </div>
+    </div>
+
+    <section style="padding: 4rem 0;">
+        <div class="container">
+
+            <div class="install-prereq">
+                <h3>📌 시작하기 전에 필요한 것</h3>
+                <p>Claude Pro 구독 (월 $20)이 필요해요. <a href="https://claude.ai" target="_blank">claude.ai</a>에서 가입할 수 있어요. API 키를 따로 구매할 수도 있지만, 구독이 가장 간편합니다.</p>
+            </div>
+
+            <div class="install-prereq" style="background: var(--secondary-bg); border-color: color-mix(in srgb, var(--secondary) 25%, transparent);">
+                <h3>💡 터미널이 무섭다면? 다른 방법도 있어요!</h3>
+                <p>터미널 설치가 부담스러우시다면, 더 쉬운 방법도 있어요:</p>
+                <ul>
+                    <li><strong>데스크톱 앱</strong> — 일반 프로그램처럼 설치해서 사용할 수 있어요. <a href="https://claude.ai/download/windows" target="_blank">Windows 다운로드</a> | <a href="https://claude.ai/download/mac" target="_blank">Mac 다운로드</a></li>
+                    <li><strong>웹 버전</strong> — 브라우저에서 바로 사용: <a href="https://claude.ai/code" target="_blank">claude.ai/code</a></li>
+                    <li><strong>VS Code 확장</strong> — VS Code를 사용한다면 확장 마켓플레이스에서 "Claude Code"를 검색하세요.</li>
+                </ul>
+            </div>
+
+            <div class="install-prereq" style="background: var(--primary-bg); border-color: color-mix(in srgb, var(--primary) 25%, transparent);">
+                <h3>✨ VS Code 내장 터미널로 설치하기 (비개발자 추천!)</h3>
+                <p style="margin-bottom: 12px;">별도 터미널 앱을 여는 게 어렵다면, <strong>VS Code의 내장 터미널</strong>을 사용해 보세요. 파일 목록을 보면서 터미널을 쓸 수 있어서 훨씬 편해요.</p>
+                <ol style="padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 2;">
+                    <li><a href="https://code.visualstudio.com" target="_blank">VS Code</a>를 설치하고, 작업할 폴더를 열어요 (File → Open Folder)</li>
+                    <li>키보드에서 <code style="background: var(--surface); padding: 2px 8px; border-radius: 4px; font-size: 0.85rem;">Ctrl + `</code> (백틱)을 눌러 내장 터미널을 열어요</li>
+                    <li>아래 설치 명령어를 그대로 복사해서 붙여넣으면 돼요!</li>
+                </ol>
+                <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem;">💡 VS Code 터미널에 대해 더 알고 싶다면 → <a href="terminal.html">터미널 페이지</a>를 확인해 보세요.</p>
+            </div>
+
+            <div class="os-tabs">
+                <button class="os-tab active" onclick="switchOS('mac')">🍎 Mac</button>
+                <button class="os-tab" onclick="switchOS('windows')">🪟 Windows</button>
+                <button class="os-tab" onclick="switchOS('linux')">🐧 Linux</button>
+            </div>
+
+            <div class="os-content active" id="os-mac">
+                <div class="install-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>터미널 열기</h3>
+                        <p><strong>Command(⌘) + Space</strong>를 눌러 Spotlight를 열고, <strong>"터미널"</strong> 또는 <strong>"Terminal"</strong>을 입력한 후 Enter를 누르세요.</p>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>설치 명령어 입력</h3>
+                        <p>아래 명령어를 복사해서 터미널에 붙여넣고 Enter를 누르세요:</p>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                            <code>curl -fsSL https://claude.ai/install.sh | bash</code>
+                        </div>
+                        <p>Homebrew를 사용하고 있다면 이 방법도 가능해요:</p>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                            <code>brew install claude-code</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>설치 확인</h3>
+                        <p>설치가 완료되면 아래 명령어로 확인하세요:</p>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                            <code>claude --version</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Claude Code 시작</h3>
+                        <p>이제 실행해 보세요!</p>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                            <code>claude</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="os-content" id="os-windows">
+                <div class="warning-box">
+                    <strong>⚠️ 사전 준비:</strong> Windows에서는 <a href="https://gitforwindows.org/" target="_blank">Git for Windows</a>가 필요할 수 있어요. 미리 설치해 주세요.
+                </div>
+                <div class="install-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>PowerShell 열기</h3>
+                        <p>키보드에서 <strong>Win 키</strong>를 누르고 <strong>"PowerShell"</strong>을 입력한 후 Enter를 누르세요. 또는 <strong>Win + X</strong>를 눌러 메뉴에서 "Windows PowerShell"을 선택하세요.</p>
+                        <p><strong>💡 붙여넣기 팁:</strong> PowerShell에서는 마우스 오른쪽 클릭으로 붙여넣기가 됩니다.</p>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>설치 명령어 입력</h3>
+                        <p>아래 명령어를 복사해서 PowerShell에 붙여넣고 Enter를 누르세요:</p>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                            <code>irm https://claude.ai/install.ps1 | iex</code>
+                        </div>
+                        <p>CMD(명령 프롬프트)를 사용한다면:</p>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                            <code>curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd</code>
+                        </div>
+                        <p>WinGet을 사용할 수도 있어요:</p>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                            <code>winget install Anthropic.ClaudeCode</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>설치 확인</h3>
+                        <p>설치가 완료되면 아래 명령어로 확인하세요:</p>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                            <code>claude --version</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Claude Code 시작</h3>
+                        <p>이제 실행해 보세요!</p>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                            <code>claude</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="os-content" id="os-linux">
+                <div class="install-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>터미널 열기</h3>
+                        <p><strong>Ctrl + Alt + T</strong>를 눌러 터미널을 열어주세요.</p>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>설치 명령어 입력</h3>
+                        <p>아래 명령어를 복사해서 터미널에 붙여넣고 Enter를 누르세요:</p>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                            <code>curl -fsSL https://claude.ai/install.sh | bash</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>설치 확인 및 시작</h3>
+                        <p>설치가 완료되면 확인하고 실행하세요:</p>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                            <code>claude --version</code>
+                        </div>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                            <code>claude</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terminal-tip">
+                <h3>🖥️ 터미널이 처음이라면? — 완전 초보 가이드</h3>
+                <div class="terminal-tip-grid">
+                    <div class="terminal-tip-col">
+                        <h4>🍎 Mac에서 터미널 열기</h4>
+                        <ol>
+                            <li><strong>Command(⌘) + Space</strong>를 눌러요</li>
+                            <li><strong>"터미널"</strong> 또는 <strong>"Terminal"</strong>을 입력해요</li>
+                            <li>Enter를 누르면 터미널이 열려요</li>
+                        </ol>
+                    </div>
+                    <div class="terminal-tip-col">
+                        <h4>🪟 Windows에서 터미널 열기</h4>
+                        <ol>
+                            <li>키보드에서 <strong>Win 키</strong>를 눌러요</li>
+                            <li><strong>"PowerShell"</strong>을 입력해요</li>
+                            <li>Enter를 누르면 터미널이 열려요</li>
+                        </ol>
+                    </div>
+                </div>
+                <h4>📝 알아두면 좋은 기본 명령어</h4>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    <code>cd Documents</code>
+                </div>
+                <p>→ Documents 폴더로 이동해요</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    <code>ls</code>
+                </div>
+                <p>→ 현재 폴더의 파일 목록을 보여줘요 (Windows에서는 <code>dir</code>)</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    <code>cd ..</code>
+                </div>
+                <p>→ 상위 폴더로 이동해요</p>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="page-nav">
+        <a href="terminal.html" class="page-nav-link prev">
+            <div class="page-nav-label">← 이전</div>
+            <div class="page-nav-title">CLI / 터미널이란?</div>
+        </a>
+        <a href="start.html" class="page-nav-link next">
+            <div class="page-nav-label">다음 →</div>
+            <div class="page-nav-title">처음 시작하기</div>
+        </a>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>Claude Code 가이드</h3>
+                <p>비개발자를 위한 Claude Code 학습 가이드. 코딩을 몰라도 AI로 업무를 자동화할 수 있어요.</p>
+            </div>
+            <div class="footer-links">
+                <h4>공식 자료</h4>
+                <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">공식 문서</a>
+                <a href="https://github.com/anthropics/claude-code" target="_blank">GitHub</a>
+                <a href="https://claude.ai" target="_blank">Claude.ai</a>
+            </div>
+            <div class="footer-links">
+                <h4>커뮤니티</h4>
+                <a href="https://discord.gg/anthropic" target="_blank">Discord</a>
+                <a href="https://github.com/anthropics/claude-code/issues" target="_blank">Q&A / 피드백</a>
+            </div>
+        </div>
+        <div class="footer-bottom">이 가이드는 Anthropic의 공식 문서를 바탕으로 비개발자를 위해 재구성한 학습 자료입니다.</div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

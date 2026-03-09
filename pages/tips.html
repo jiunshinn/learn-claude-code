@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>꿀팁 모음 — Claude Code 가이드</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">CC</div>가이드</a>
+            <ul class="nav-links">
+                <li><a href="intro.html">소개</a></li>
+                <li><a href="who.html">추천 대상</a></li>
+                <li><a href="terminal.html">터미널</a></li>
+                <li><a href="install.html">설치</a></li>
+                <li><a href="start.html">시작하기</a></li>
+                <li><a href="commands.html">명령어</a></li>
+                <li><a href="usecases.html">활용 사례</a></li>
+                <li><a href="claudemd.html">CLAUDE.md</a></li>
+                <li><a href="tips.html">꿀팁</a></li>
+                <li><a href="projects.html">실전 프로젝트</a></li>
+                <li><a href="git.html">Git</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="resources.html">추천 자료</a></li>
+                <li><a href="tools.html">유용한 도구</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="테마 변경">🌙</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="intro.html">소개</a><a href="who.html">추천 대상</a><a href="terminal.html">터미널</a><a href="install.html">설치</a>
+        <a href="start.html">시작하기</a><a href="commands.html">명령어</a><a href="usecases.html">활용 사례</a>
+        <a href="claudemd.html">CLAUDE.md</a><a href="tips.html">꿀팁</a><a href="projects.html">실전 프로젝트</a><a href="git.html">Git</a><a href="faq.html">FAQ</a>
+        <a href="resources.html">추천 자료</a>
+        <a href="tools.html">유용한 도구</a>
+    </div>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="breadcrumb"><a href="../index.html">홈</a><span class="sep">›</span><span>꿀팁 모음</span></div>
+            <div class="page-number">09</div>
+            <span class="section-label">✨ 꿀팁</span>
+            <h1 class="section-title">꿀팁 모음</h1>
+            <p class="section-desc">Claude Code를 더 잘 쓰는 방법들이에요.</p>
+        </div>
+    </div>
+
+    <section style="padding-top:40px;">
+        <div class="container">
+            <div class="tips-grid">
+                <div class="tip-card reveal">
+                    <div class="tip-number">01</div>
+                    <h3>🎯 프롬프트 구조화하기</h3>
+                    <p>막연하게 말하지 말고, 구조를 갖춰서 요청하세요. 결과물이 훨씬 좋아져요.</p>
+                    <code style="font-size:0.8rem; flex-direction:column; align-items:flex-start; gap:4px; white-space:pre-wrap;">작업: [무엇을 할지]
+맥락: [배경 정보]
+형식: [원하는 결과물 형태]
+조건: [지켜야 할 것]
+저장: [어디에 저장할지]</code>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-number">02</div>
+                    <h3>🔄 주제가 바뀌면 /clear</h3>
+                    <p>다른 작업을 시작할 때는 반드시 /clear로 대화를 리셋하세요. Claude가 이전 맥락에 혼란을 겪지 않아요.</p>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-number">03</div>
+                    <h3>📎 @로 파일 직접 지정</h3>
+                    <p>'이 파일'이라고 말하는 대신 @파일명으로 정확히 지정하세요. Claude가 정확한 파일을 참조합니다.</p>
+                    <code>@data/sales.csv 분석해줘</code>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-number">04</div>
+                    <h3>🧠 Tab으로 깊이 생각하게</h3>
+                    <p>복잡한 분석이 필요할 때, 메시지 입력 전 Tab을 누르면 Claude가 '확장 사고 모드'로 더 깊이 고민해요.</p>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-number">05</div>
+                    <h3>🔍 탐색 → 계획 → 실행</h3>
+                    <p>큰 작업은 세 단계로 나누세요. 먼저 현황 파악, 그 다음 계획 수립, 마지막으로 실행. 한 번에 다 하려 하지 마세요.</p>
+                </div>
+                <div class="tip-card reveal">
+                    <div class="tip-number">06</div>
+                    <h3>🔒 안전하게 사용하기</h3>
+                    <p>비밀번호나 API 키는 CLAUDE.md에 적지 마세요. 파일 수정 전 Claude의 계획을 꼭 확인하고, 중요한 파일은 백업해 두세요.</p>
+                </div>
+            </div>
+
+            <div class="page-nav">
+                <a href="claudemd.html" class="page-nav-link prev"><div class="page-nav-label">← 이전</div><div class="page-nav-title">CLAUDE.md 이해하기</div></a>
+                <a href="projects.html" class="page-nav-link next"><div class="page-nav-label">다음 →</div><div class="page-nav-title">실전 프로젝트</div></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><h3>Claude Code 가이드</h3><p>비개발자를 위한 Claude Code 학습 가이드.</p></div>
+            <div class="footer-links">
+                <h4>공식 자료</h4>
+                <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">공식 문서</a>
+                <a href="https://github.com/anthropics/claude-code" target="_blank">GitHub</a>
+                <a href="https://claude.ai" target="_blank">Claude.ai</a>
+            </div>
+            <div class="footer-links">
+                <h4>커뮤니티</h4>
+                <a href="https://discord.gg/anthropic" target="_blank">Discord</a>
+                <a href="https://github.com/anthropics/claude-code/issues" target="_blank">Q&A / 피드백</a>
+            </div>
+        </div>
+        <div class="footer-bottom">이 가이드는 Anthropic의 공식 문서를 바탕으로 비개발자를 위해 재구성한 학습 자료입니다.</div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>
