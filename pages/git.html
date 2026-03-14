@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git 활용법 — Claude Code 가이드</title>
+    <title>Git 완전 정복 — Claude Code 가이드</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <link rel="stylesheet" href="../css/style.css">
@@ -45,24 +45,87 @@
 
     <div class="page-header">
         <div class="container">
-            <div class="breadcrumb"><a href="../index.html">홈</a><span class="sep">›</span><span>Git 활용법</span></div>
+            <div class="breadcrumb"><a href="../index.html">홈</a><span class="sep">›</span><span>Git 완전 정복</span></div>
             <div class="page-number">11</div>
             <span class="section-label">🔀 Git</span>
-            <h1 class="section-title">Git 활용법</h1>
-            <p class="section-desc">파일의 변경 이력을 관리하는 Git. 어렵게 느껴져도 Claude Code와 함께라면 쉬워요.</p>
+            <h1 class="section-title">Git 완전 정복</h1>
+            <p class="section-desc">파일의 변경 이력을 관리하는 Git. 실습과 함께 배우면 전혀 어렵지 않아요.</p>
         </div>
     </div>
 
     <section style="padding-top:40px;">
         <div class="container">
 
+            <!-- ===== 1. 비유로 이해하기 ===== -->
             <div class="claudemd-analogy reveal">
                 <h3>📓 비유로 이해하기</h3>
-                <p>문서 작업을 할 때 "보고서_최종.docx", "보고서_최종_진짜최종.docx", "보고서_최종_수정_v3.docx"처럼 파일을 복사해본 적 있나요? <strong>Git은 이런 버전 관리를 자동으로 해주는 도구</strong>예요. 파일을 하나만 유지하면서도, 언제 누가 무엇을 바꿨는지 전부 기록해 줍니다. 실수로 파일을 망쳐도 이전 버전으로 쉽게 되돌릴 수 있어요.</p>
+                <p>"보고서_최종.docx", "보고서_최종_진짜최종.docx", "보고서_최종_수정_v3.docx" — 이렇게 파일을 복사해본 적 있나요?</p>
+                <p style="margin-top:12px;"><strong>Git은 이런 버전 관리를 자동으로 해주는 도구</strong>예요. 파일을 하나만 유지하면서도, 언제 누가 무엇을 바꿨는지 전부 기록해 줍니다. 실수로 파일을 망쳐도 이전 버전으로 쉽게 되돌릴 수 있어요.</p>
+                <p style="margin-top:12px;">구글 문서의 "버전 기록" 기능을 상상해 보세요. Git은 그것의 훨씬 강력한 버전이에요 — 모든 종류의 파일에 대해, 내 컴퓨터에서 동작합니다.</p>
             </div>
 
-            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:48px;">🧩 핵심 개념 4가지</h2>
-            <p class="section-desc reveal" style="margin-bottom:32px;">이것만 알면 Git의 80%를 이해한 거예요.</p>
+            <!-- ===== Git은 코드만을 위한 게 아니에요 ===== -->
+            <div class="claudemd-analogy reveal" style="margin-top:24px; border-left:4px solid var(--accent);">
+                <h3>📎 잠깐! Git은 코드만 관리하는 도구가 아니에요</h3>
+                <p>"Git = 개발자 도구"라고 생각하기 쉽지만, 실제로는 <strong>모든 종류의 파일</strong>을 관리할 수 있어요.</p>
+                <ul class="features-list" style="margin-top:12px;">
+                    <li><strong>기획 문서</strong> — 기획서, 제안서, 회의록의 변경 이력 관리</li>
+                    <li><strong>디자인 파일</strong> — Figma 연동이 아니라 SVG, HTML 기반 디자인 파일</li>
+                    <li><strong>데이터 파일</strong> — CSV, JSON 등 데이터 파일의 버전 추적</li>
+                    <li><strong>웹사이트</strong> — HTML/CSS 파일을 GitHub Pages로 무료 배포</li>
+                    <li><strong>글쓰기</strong> — 블로그 글, 번역 원고, 매뉴얼 등 텍스트 기반 작업</li>
+                </ul>
+                <p style="margin-top:12px;">즉, <strong>"파일이 바뀌는 모든 작업"</strong>에 Git을 쓸 수 있어요. 코딩을 안 해도 Git은 여러분의 강력한 도구가 될 수 있습니다.</p>
+            </div>
+
+            <!-- ===== AI 시대의 Git ===== -->
+            <div class="claudemd-analogy reveal" style="margin-top:24px; border-left:4px solid var(--primary);">
+                <h3>🧠 AI 시대, 명령어를 외울 필요 없어요</h3>
+                <p>과거에는 Git을 쓰려면 수십 개의 명령어를 외워야 했어요. 하지만 이제는 다릅니다.</p>
+                <p style="margin-top:12px;"><strong>Claude Code + gh CLI</strong> 조합이면, 여러분은 <strong>개념만 알면</strong> 충분해요. 아래 6가지 개념만 이해하면 나머지는 AI가 해줍니다:</p>
+                <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:16px;">
+                    <span style="padding:8px 16px; background:var(--bg-secondary); border-radius:20px; font-size:0.9rem; font-weight:600;">📁 저장소 (Repository)</span>
+                    <span style="padding:8px 16px; background:var(--bg-secondary); border-radius:20px; font-size:0.9rem; font-weight:600;">🌿 브랜치 (Branch)</span>
+                    <span style="padding:8px 16px; background:var(--bg-secondary); border-radius:20px; font-size:0.9rem; font-weight:600;">💾 커밋 (Commit)</span>
+                    <span style="padding:8px 16px; background:var(--bg-secondary); border-radius:20px; font-size:0.9rem; font-weight:600;">🚚 푸시 (Push)</span>
+                    <span style="padding:8px 16px; background:var(--bg-secondary); border-radius:20px; font-size:0.9rem; font-weight:600;">📬 풀 리퀘스트 (PR)</span>
+                    <span style="padding:8px 16px; background:var(--bg-secondary); border-radius:20px; font-size:0.9rem; font-weight:600;">📥 풀 (Pull)</span>
+                </div>
+                <p style="margin-top:16px;">예를 들어 "feature 브랜치에서 작업한 걸 PR 만들어줘"라고 말하면, Claude Code가 <code>git push</code>하고 <code>gh pr create</code>까지 알아서 해줘요. 명령어를 몰라도 <strong>"무엇을 하고 싶은지"만 말하면</strong> 돼요.</p>
+            </div>
+
+            <!-- ===== 2. Git을 왜 배워야 할까? ===== -->
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:48px;">🤔 비전공자가 Git을 배워야 하는 이유</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">코딩을 안 해도 Git이 필요한 순간이 점점 많아지고 있어요.</p>
+
+            <div class="what-grid reveal">
+                <div class="what-card">
+                    <div class="what-card-icon">🤖</div>
+                    <h3>Claude Code의 안전장치</h3>
+                    <p>Claude Code가 파일을 수정할 때, Git이 있으면 언제든 <strong>원래 상태로 되돌릴 수 있어요</strong>. AI가 실수해도 걱정 없어요.</p>
+                </div>
+                <div class="what-card">
+                    <div class="what-card-icon">👥</div>
+                    <h3>팀 협업의 기본</h3>
+                    <p>개발자와 함께 일하거나, 문서/디자인 파일을 공유할 때 Git은 <strong>팀 협업의 공용어</strong>예요.</p>
+                </div>
+            </div>
+            <div class="what-grid reveal" style="margin-top:20px;">
+                <div class="what-card">
+                    <div class="what-card-icon">📂</div>
+                    <h3>GitHub 포트폴리오</h3>
+                    <p>GitHub에 프로젝트를 올려두면 나만의 <strong>디지털 포트폴리오</strong>가 돼요. 웹사이트도 무료로 배포할 수 있어요.</p>
+                </div>
+                <div class="what-card">
+                    <div class="what-card-icon">⏰</div>
+                    <h3>시간 여행</h3>
+                    <p>"3일 전 버전으로 돌아가고 싶어" — Git이 있으면 <strong>시간 여행</strong>이 가능해요. 실수가 두렵지 않아요.</p>
+                </div>
+            </div>
+
+            <!-- ===== 3. 핵심 개념 ===== -->
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">🧩 핵심 개념 6가지</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">이것만 이해하면 돼요. 명령어는 AI가 대신 쳐줍니다.</p>
 
             <div class="what-grid reveal">
                 <div class="what-card">
@@ -77,7 +140,7 @@
                 <div class="what-card">
                     <div class="what-card-icon">💾</div>
                     <h3>커밋 (Commit)</h3>
-                    <p>"이 시점을 기억해줘"라고 저장하는 거예요. 게임의 세이브 포인트와 같아요.</p>
+                    <p>"이 시점을 기억해줘"라고 저장하는 거예요. 게임의 <strong>세이브 포인트</strong>와 같아요.</p>
                     <ul class="features-list">
                         <li>변경 내용 + 설명 메시지를 함께 기록</li>
                         <li>언제든 이 시점으로 되돌아갈 수 있음</li>
@@ -106,8 +169,461 @@
                 </div>
             </div>
 
+            <div class="what-grid reveal" style="margin-top:20px;">
+                <div class="what-card">
+                    <div class="what-card-icon">📬</div>
+                    <h3>풀 리퀘스트 (Pull Request / PR)</h3>
+                    <p>"내가 이렇게 바꿔봤는데, 확인하고 합쳐줄래?" 하고 <strong>팀에게 검토를 요청</strong>하는 거예요.</p>
+                    <ul class="features-list">
+                        <li>브랜치에서 작업 → PR 생성 → 리뷰 → 합치기</li>
+                        <li>혼자 작업할 때도 변경 내역을 정리하는 데 유용</li>
+                        <li>GitHub에서 변경 사항을 한눈에 비교 가능</li>
+                    </ul>
+                </div>
+                <div class="what-card">
+                    <div class="what-card-icon">🔀</div>
+                    <h3>머지 (Merge)</h3>
+                    <p>브랜치에서 작업한 내용을 원본(main)에 <strong>합치는 것</strong>이에요. PR이 승인되면 머지 버튼 하나로 끝!</p>
+                    <ul class="features-list">
+                        <li>PR 리뷰가 끝나면 "Merge" 클릭</li>
+                        <li>충돌이 있으면 Claude Code가 해결 도와줌</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ===== Git 작업 흐름 시각화 ===== -->
+            <div class="claudemd-analogy reveal" style="margin-top:40px;">
+                <h3>🔄 Git의 기본 흐름 — 택배 보내기에 비유</h3>
+                <p style="margin-bottom:16px;">Git의 작업 흐름을 택배 보내기에 비유하면 이해하기 쉬워요.</p>
+                <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:16px;">
+                    <div style="flex:1; min-width:140px; text-align:center; padding:16px; background:var(--bg-secondary); border-radius:12px;">
+                        <div style="font-size:2rem; margin-bottom:8px;">📝</div>
+                        <strong>파일 수정</strong>
+                        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:4px;">물건 준비하기</p>
+                    </div>
+                    <div style="flex:0 0 30px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; color:var(--text-secondary);">→</div>
+                    <div style="flex:1; min-width:140px; text-align:center; padding:16px; background:var(--bg-secondary); border-radius:12px;">
+                        <div style="font-size:2rem; margin-bottom:8px;">📦</div>
+                        <strong>git add</strong>
+                        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:4px;">박스에 담기</p>
+                    </div>
+                    <div style="flex:0 0 30px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; color:var(--text-secondary);">→</div>
+                    <div style="flex:1; min-width:140px; text-align:center; padding:16px; background:var(--bg-secondary); border-radius:12px;">
+                        <div style="font-size:2rem; margin-bottom:8px;">🏷️</div>
+                        <strong>git commit</strong>
+                        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:4px;">송장 붙이기</p>
+                    </div>
+                    <div style="flex:0 0 30px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; color:var(--text-secondary);">→</div>
+                    <div style="flex:1; min-width:140px; text-align:center; padding:16px; background:var(--bg-secondary); border-radius:12px;">
+                        <div style="font-size:2rem; margin-bottom:8px;">🚚</div>
+                        <strong>git push</strong>
+                        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:4px;">택배 발송!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 4. 실습 Part 1: Git 설치 확인 & 설정 ===== -->
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">🛠️ 실습 1: Git 설치 확인 & 초기 설정</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">터미널을 열고 하나씩 따라해 보세요. 5분이면 끝나요!</p>
+
+            <div class="start-flow">
+                <div class="start-item reveal">
+                    <div class="start-num">1</div>
+                    <h3>Git이 설치되어 있는지 확인하기</h3>
+                    <p>터미널을 열고 아래 명령어를 입력하세요. 버전 번호가 나오면 이미 설치된 거예요!</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git --version</code>
+                    </div>
+                    <div class="tip">💡 Mac에는 Git이 기본 설치되어 있어요. Windows는 <a href="https://git-scm.com" target="_blank" style="color:var(--primary);">git-scm.com</a>에서 다운로드하세요. 설치 옵션은 모두 기본값으로 "Next"만 누르면 돼요.</div>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">2</div>
+                    <h3>내 이름과 이메일 등록하기</h3>
+                    <p>Git에게 "나는 누구"인지 알려주세요. 커밋할 때 이 정보가 기록돼요. <strong>처음 한 번만</strong> 하면 돼요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git config --global user.name "홍길동"</code>
+                    </div>
+                    <div class="code-block" style="margin-top:8px;">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git config --global user.email "gildong@email.com"</code>
+                    </div>
+                    <div class="tip">💡 GitHub 계정이 있다면, GitHub에 등록한 이메일과 같은 이메일을 사용하세요.</div>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">3</div>
+                    <h3>설정이 잘 됐는지 확인하기</h3>
+                    <p>아래 명령어로 방금 설정한 정보를 확인할 수 있어요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git config --list</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 5. 실습 Part 2: 첫 번째 저장소 만들기 ===== -->
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">📂 실습 2: 첫 번째 Git 저장소 만들기</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">연습용 폴더를 만들고, Git으로 변경 이력을 추적해 봐요.</p>
+
+            <div class="start-flow">
+                <div class="start-item reveal">
+                    <div class="start-num">1</div>
+                    <h3>연습용 폴더 만들기</h3>
+                    <p>바탕화면(Desktop)에 연습용 폴더를 만들고 이동할게요.</p>
+                    <div class="grid-2">
+                        <div>
+                            <h4>Mac</h4>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>mkdir ~/Desktop/git-practice && cd ~/Desktop/git-practice</code>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Windows</h4>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>mkdir %USERPROFILE%\Desktop\git-practice && cd %USERPROFILE%\Desktop\git-practice</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">2</div>
+                    <h3>Git 저장소 초기화하기</h3>
+                    <p>이 폴더를 Git이 관리하는 저장소로 만들어요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git init</code>
+                    </div>
+                    <p style="margin-top:12px; color:var(--text-secondary); font-size:0.9rem;">✅ "Initialized empty Git repository..." 메시지가 나오면 성공! 이제 이 폴더의 모든 변경이 추적돼요.</p>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">3</div>
+                    <h3>첫 번째 파일 만들기</h3>
+                    <p>간단한 텍스트 파일을 하나 만들어 볼게요.</p>
+                    <div class="grid-2">
+                        <div>
+                            <h4>Mac</h4>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>echo "안녕하세요! Git 연습 중입니다." > hello.txt</code>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Windows</h4>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>echo 안녕하세요! Git 연습 중입니다. > hello.txt</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">4</div>
+                    <h3>현재 상태 확인하기</h3>
+                    <p><code>git status</code>는 "지금 뭐가 바뀌었어?"라고 Git에게 물어보는 거예요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git status</code>
+                    </div>
+                    <p style="margin-top:12px; color:var(--text-secondary); font-size:0.9rem;">📋 <code>hello.txt</code>가 빨간색으로 "Untracked files"에 나타나요. "아직 추적하지 않는 새 파일이 있어요"라는 뜻이에요.</p>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">5</div>
+                    <h3>파일을 박스에 담기 (Staging)</h3>
+                    <p>커밋할 파일을 선택하는 과정이에요. 택배 비유로 치면 "박스에 물건 담기"예요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git add hello.txt</code>
+                    </div>
+                    <div class="tip">💡 <code>git add .</code>을 쓰면 변경된 모든 파일을 한꺼번에 담을 수 있어요. 하지만 처음에는 파일 이름을 직접 지정하는 게 안전해요.</div>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">6</div>
+                    <h3>첫 번째 커밋! (세이브 포인트 만들기)</h3>
+                    <p>드디어 첫 번째 저장이에요! <code>-m</code> 뒤에 "무엇을 했는지" 메시지를 적어요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git commit -m "첫 번째 커밋: hello.txt 파일 추가"</code>
+                    </div>
+                    <p style="margin-top:12px; color:var(--text-secondary); font-size:0.9rem;">🎉 축하해요! 방금 첫 번째 Git 커밋을 만들었어요!</p>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">7</div>
+                    <h3>커밋 기록 확인하기</h3>
+                    <p>지금까지의 기록을 볼 수 있어요. 게임의 세이브 목록처럼요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git log --oneline</code>
+                    </div>
+                    <p style="margin-top:12px; color:var(--text-secondary); font-size:0.9rem;">📋 방금 만든 커밋이 해시코드(예: <code>a1b2c3d</code>)와 함께 표시돼요.</p>
+                </div>
+            </div>
+
+            <!-- ===== 6. 실습 Part 3: 수정 → 커밋 반복 ===== -->
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">🔁 실습 3: 파일 수정하고 다시 커밋하기</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">Git의 핵심은 "수정 → add → commit"의 반복이에요. 한 번 더 해볼까요?</p>
+
+            <div class="start-flow">
+                <div class="start-item reveal">
+                    <div class="start-num">1</div>
+                    <h3>파일 내용 수정하기</h3>
+                    <p>hello.txt에 한 줄을 추가해 볼게요.</p>
+                    <div class="grid-2">
+                        <div>
+                            <h4>Mac</h4>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>echo "Git 정말 재미있네요!" >> hello.txt</code>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Windows</h4>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>echo Git 정말 재미있네요! >> hello.txt</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip">💡 <code>></code> 하나는 파일을 덮어쓰고, <code>>></code> 두 개는 기존 내용 뒤에 추가해요. 주의하세요!</div>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">2</div>
+                    <h3>무엇이 변경됐는지 확인하기</h3>
+                    <p><code>git diff</code>는 "마지막 커밋과 뭐가 달라졌어?"를 보여줘요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git diff</code>
+                    </div>
+                    <p style="margin-top:12px; color:var(--text-secondary); font-size:0.9rem;">초록색 <code>+</code>로 표시된 줄이 새로 추가된 내용이에요.</p>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">3</div>
+                    <h3>add → commit 한 번에!</h3>
+                    <p>이번에는 add와 commit을 한 줄로 해볼게요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git add hello.txt && git commit -m "hello.txt에 감상 한 줄 추가"</code>
+                    </div>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">4</div>
+                    <h3>커밋 기록 다시 확인!</h3>
+                    <p>이제 커밋이 2개가 됐을 거예요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git log --oneline</code>
+                    </div>
+                    <p style="margin-top:12px; color:var(--text-secondary); font-size:0.9rem;">🎯 두 개의 커밋이 시간순으로 나타나요. 이게 바로 버전 관리예요!</p>
+                </div>
+            </div>
+
+            <!-- ===== 7. 실습 Part 4: 되돌리기 ===== -->
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">⏪ 실습 4: 실수를 되돌리기</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">Git의 가장 강력한 기능! 실수해도 이전 상태로 돌아갈 수 있어요.</p>
+
+            <div class="start-flow">
+                <div class="start-item reveal">
+                    <div class="start-num">1</div>
+                    <h3>일부러 실수해보기</h3>
+                    <p>실수를 시뮬레이션해볼게요. 파일 내용을 엉뚱하게 바꿔봐요.</p>
+                    <div class="grid-2">
+                        <div>
+                            <h4>Mac</h4>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>echo "아이고 실수!" > hello.txt</code>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Windows</h4>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>echo 아이고 실수! > hello.txt</code>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="margin-top:12px; color:var(--text-secondary); font-size:0.9rem;">😱 이제 원래 내용이 사라지고 "아이고 실수!"만 남았어요.</p>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">2</div>
+                    <h3>마지막 커밋 상태로 되돌리기</h3>
+                    <p>걱정 마세요! 아직 커밋하지 않았으니, 마지막으로 저장한 상태로 되돌릴 수 있어요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git checkout -- hello.txt</code>
+                    </div>
+                    <p style="margin-top:12px; color:var(--text-secondary); font-size:0.9rem;">✅ 파일을 열어보면 원래 내용이 복구되어 있을 거예요!</p>
+                    <div class="tip">💡 <code>git checkout -- 파일명</code>은 "이 파일을 마지막 커밋 상태로 되돌려줘"라는 뜻이에요. 아직 커밋하지 않은 변경사항만 되돌릴 수 있어요.</div>
+                </div>
+
+                <div class="start-item reveal" style="border-left: 3px solid var(--accent);">
+                    <div class="start-num" style="background: var(--accent);">!</div>
+                    <h3>커밋한 후에 되돌리고 싶다면?</h3>
+                    <p>이미 커밋한 내용을 되돌리고 싶을 때는 상황에 따라 다른 명령어를 써요. 하지만 걱정하지 마세요 — <strong>Claude Code에게 말로 설명하면</strong> 알아서 해줘요!</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>마지막 커밋을 취소하고 이전 상태로 돌아가줘</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 8. 실습 Part 5: GitHub에 올리기 ===== -->
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">☁️ 실습 5: GitHub에 내 프로젝트 올리기</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">로컬에서 만든 프로젝트를 GitHub에 올려서 백업하고 공유해 봐요.</p>
+
+            <div class="start-flow">
+                <div class="start-item reveal">
+                    <div class="start-num">1</div>
+                    <h3>GitHub 계정 만들기</h3>
+                    <p><a href="https://github.com" target="_blank" style="color:var(--primary); font-weight:600;">github.com</a>에서 무료 계정을 만드세요. 이메일만 있으면 돼요.</p>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">2</div>
+                    <h3>새 저장소(Repository) 만들기</h3>
+                    <p>GitHub 우측 상단의 <strong>"+"</strong> 버튼 → <strong>"New repository"</strong>를 클릭하세요.</p>
+                    <ul class="features-list" style="margin-top:12px;">
+                        <li>Repository name: <code>git-practice</code> 입력</li>
+                        <li>Public 선택 (누구나 볼 수 있음)</li>
+                        <li>"Add a README file"은 체크하지 마세요!</li>
+                        <li>"Create repository" 클릭</li>
+                    </ul>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">3</div>
+                    <h3>로컬과 GitHub 연결하기</h3>
+                    <p>GitHub에서 만든 저장소의 주소를 연결해요. GitHub 페이지에 나온 명령어를 복사해서 터미널에 붙여넣으세요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git remote add origin https://github.com/내아이디/git-practice.git</code>
+                    </div>
+                    <div class="tip">💡 <code>내아이디</code> 부분을 본인의 GitHub 아이디로 바꿔주세요!</div>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">4</div>
+                    <h3>GitHub에 푸시하기!</h3>
+                    <p>드디어 내 코드를 GitHub에 올리는 순간이에요!</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git branch -M main && git push -u origin main</code>
+                    </div>
+                    <p style="margin-top:12px; color:var(--text-secondary); font-size:0.9rem;">🎉 GitHub에서 내 저장소 페이지를 새로고침하면, 방금 올린 파일이 보일 거예요!</p>
+                    <div class="tip">💡 처음 푸시할 때 GitHub 로그인을 요청할 수 있어요. 비밀번호 대신 <strong>Personal Access Token</strong>을 사용하세요. GitHub 설정(Settings) → Developer settings → Personal access tokens에서 만들 수 있어요.</div>
+                </div>
+            </div>
+
+            <!-- ===== 9. 실습 Part 6: 브랜치 체험 ===== -->
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">🌿 실습 6: 브랜치로 안전하게 실험하기</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">원본을 보존하면서 새로운 시도를 해보는 브랜치를 직접 만들어 봐요.</p>
+
+            <div class="start-flow">
+                <div class="start-item reveal">
+                    <div class="start-num">1</div>
+                    <h3>새 브랜치 만들고 이동하기</h3>
+                    <p>"experiment"라는 이름의 브랜치를 만들고 그쪽으로 이동해요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git checkout -b experiment</code>
+                    </div>
+                    <p style="margin-top:12px; color:var(--text-secondary); font-size:0.9rem;">🌿 이제 "experiment" 브랜치에 있어요. 여기서 뭘 해도 원본(main)에는 영향이 없어요!</p>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">2</div>
+                    <h3>브랜치에서 새 파일 추가하기</h3>
+                    <p>실험적으로 새 파일을 만들어 볼게요.</p>
+                    <div class="grid-2">
+                        <div>
+                            <h4>Mac</h4>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>echo "이건 실험용 파일이에요!" > experiment.txt</code>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Windows</h4>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                                <code>echo 이건 실험용 파일이에요! > experiment.txt</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="code-block" style="margin-top:8px;">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git add experiment.txt && git commit -m "실험용 파일 추가"</code>
+                    </div>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">3</div>
+                    <h3>원본(main)으로 돌아가 보기</h3>
+                    <p>main 브랜치로 돌아가면 experiment.txt가 사라져요! 놀라지 마세요 — experiment 브랜치에만 있는 파일이니까요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git checkout main</code>
+                    </div>
+                    <p style="margin-top:12px; color:var(--text-secondary); font-size:0.9rem;">👀 폴더를 확인해보면 experiment.txt가 없어요. main에는 영향이 없는 거예요!</p>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">4</div>
+                    <h3>실험 결과 합치기 (Merge)</h3>
+                    <p>실험이 마음에 들면, main에 합칠 수 있어요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git merge experiment</code>
+                    </div>
+                    <p style="margin-top:12px; color:var(--text-secondary); font-size:0.9rem;">✅ 이제 main에도 experiment.txt가 생겼어요! 브랜치의 변경사항이 합쳐진 거예요.</p>
+                </div>
+            </div>
+
+            <!-- ===== 10. 꼭 알아야 할 Git 명령어 요약 ===== -->
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">📋 꼭 알아야 할 Git 명령어 요약</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">이 명령어들만 알면 일상적인 Git 사용에 충분해요.</p>
+
+            <div style="overflow-x:auto;" class="reveal">
+                <table style="width:100%; border-collapse:collapse; font-size:0.93rem;">
+                    <thead>
+                        <tr style="background:var(--bg-secondary);">
+                            <th style="padding:12px 16px; text-align:left; border-bottom:2px solid var(--border-light); font-weight:700; white-space:nowrap;">명령어</th>
+                            <th style="padding:12px 16px; text-align:left; border-bottom:2px solid var(--border-light); font-weight:700;">쉬운 설명</th>
+                            <th style="padding:12px 16px; text-align:left; border-bottom:2px solid var(--border-light); font-weight:700; white-space:nowrap;">비유</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);"><code>git init</code></td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">이 폴더를 Git으로 관리 시작</td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">일기장 시작</td></tr>
+                        <tr><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);"><code>git status</code></td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">지금 뭐가 변경됐는지 확인</td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">거울 보기</td></tr>
+                        <tr><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);"><code>git add 파일명</code></td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">커밋할 파일 선택</td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">박스에 담기</td></tr>
+                        <tr><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);"><code>git commit -m "메시지"</code></td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">변경 사항 저장</td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">세이브 포인트</td></tr>
+                        <tr><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);"><code>git log --oneline</code></td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">저장 이력 보기</td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">세이브 목록</td></tr>
+                        <tr><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);"><code>git diff</code></td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">뭐가 달라졌는지 비교</td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">틀린 그림 찾기</td></tr>
+                        <tr><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);"><code>git checkout -b 이름</code></td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">새 브랜치 만들고 이동</td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">연습장 꺼내기</td></tr>
+                        <tr><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);"><code>git merge 브랜치명</code></td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">브랜치 합치기</td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">연습장 내용 본책에 옮기기</td></tr>
+                        <tr><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);"><code>git push</code></td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">GitHub에 업로드</td><td style="padding:10px 16px; border-bottom:1px solid var(--border-light);">택배 발송</td></tr>
+                        <tr><td style="padding:10px 16px;"><code>git pull</code></td><td style="padding:10px 16px;">GitHub에서 다운로드</td><td style="padding:10px 16px;">택배 수령</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ===== 11. Claude Code가 Git을 쉽게 ===== -->
             <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">🤖 Claude Code가 Git을 쉽게 만들어줘요</h2>
-            <p class="section-desc reveal" style="margin-bottom:32px;">복잡한 Git 명령어를 외울 필요 없어요. Claude에게 말로 시키면 돼요.</p>
+            <p class="section-desc reveal" style="margin-bottom:32px;">명령어를 외울 필요 없어요. Claude에게 말로 시키면 돼요.</p>
 
             <div class="tips-grid">
                 <div class="tip-card reveal">
@@ -132,6 +648,7 @@
                 </div>
             </div>
 
+            <!-- ===== 12. 실전 프롬프트 ===== -->
             <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">💬 이렇게 말해보세요</h2>
             <p class="section-desc reveal" style="margin-bottom:32px;">실제로 Claude Code에서 바로 사용할 수 있는 프롬프트예요.</p>
 
@@ -206,9 +723,157 @@ GitHub에 푸시해줘.</div>
                 </div>
             </div>
 
+            <!-- ===== 13. 자주 하는 실수 & 해결법 ===== -->
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">🚨 자주 하는 실수 & 해결법</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">초보자가 겪는 흔한 문제들, 당황하지 마세요!</p>
+
+            <div class="start-flow">
+                <div class="start-item reveal">
+                    <div class="start-num" style="background: #e74c3c;">!</div>
+                    <h3>"커밋할 게 없다"는 메시지가 나올 때</h3>
+                    <p><code>git add</code>를 먼저 했는지 확인하세요. add 없이는 커밋할 파일이 없어요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git add . && git commit -m "변경사항 저장"</code>
+                    </div>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num" style="background: #e74c3c;">!</div>
+                    <h3>push할 때 "rejected" 에러</h3>
+                    <p>다른 사람(또는 GitHub에서)이 먼저 변경한 게 있을 때 발생해요. 먼저 pull 하세요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git pull origin main</code>
+                    </div>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num" style="background: #e74c3c;">!</div>
+                    <h3>잘못된 파일을 add 했을 때</h3>
+                    <p>아직 커밋하지 않았다면, staging에서 빼면 돼요. 파일 내용은 안 바뀌어요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git reset HEAD 파일명</code>
+                    </div>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num" style="background: #e74c3c;">!</div>
+                    <h3>커밋 메시지를 잘못 썼을 때</h3>
+                    <p>가장 최근 커밋의 메시지만 바꿀 수 있어요.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>git commit --amend -m "수정된 커밋 메시지"</code>
+                    </div>
+                    <div class="tip">💡 이미 push한 커밋은 amend하면 복잡해져요. 그럴 땐 Claude Code에게 도움을 요청하세요!</div>
+                </div>
+            </div>
+
+            <!-- ===== 14. .gitignore ===== -->
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">🙈 .gitignore — Git이 무시할 파일 정하기</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">비밀번호, 임시 파일 등 Git에 올리면 안 되는 것들을 지정해요.</p>
+
+            <div class="claudemd-analogy reveal">
+                <h3>📝 .gitignore 파일 예시</h3>
+                <p>프로젝트 루트에 <code>.gitignore</code> 파일을 만들고, 무시할 패턴을 적어요.</p>
+                <div class="code-block" style="margin-top:16px;">
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    <code># 비밀 정보가 담긴 파일
+.env
+secrets.json
+
+# 자동 생성되는 폴더
+node_modules/
+__pycache__/
+
+# OS가 만드는 불필요한 파일
+.DS_Store
+Thumbs.db</code>
+                </div>
+                <div class="tip" style="margin-top:16px;">💡 Claude Code에게 "이 프로젝트에 맞는 .gitignore 만들어줘"라고 하면 자동으로 만들어 줘요!</div>
+            </div>
+
+            <!-- ===== Claude Code + gh CLI 실전 워크플로우 ===== -->
+            <h2 class="section-title reveal" style="font-size:1.6rem; margin-top:56px;">⚡ Claude Code + gh CLI = 비전공자의 무기</h2>
+            <p class="section-desc reveal" style="margin-bottom:32px;">Claude Code와 GitHub CLI(gh)를 함께 쓰면, 개발자처럼 Git을 쓸 수 있어요. 명령어 하나 모르고도요.</p>
+
+            <div class="claudemd-analogy reveal">
+                <h3>🔧 gh CLI란?</h3>
+                <p><strong>gh</strong>는 GitHub의 공식 명령줄 도구예요. 터미널에서 PR 만들기, 이슈 확인, 저장소 만들기 등을 할 수 있어요. Claude Code가 gh 명령어를 자동으로 실행해 주니까, 여러분은 설치만 해두면 돼요.</p>
+                <div class="code-block" style="margin-top:12px;">
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    <code># Mac
+brew install gh
+
+# Windows
+winget install GitHub.cli</code>
+                </div>
+                <div class="code-block" style="margin-top:8px;">
+                    <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                    <code># 설치 후 로그인 (처음 한 번만)
+gh auth login</code>
+                </div>
+            </div>
+
+            <h3 class="reveal" style="font-size:1.2rem; font-weight:700; margin-top:36px; margin-bottom:20px;">🎯 실전 시나리오: 비전공자의 하루</h3>
+
+            <div class="start-flow">
+                <div class="start-item reveal">
+                    <div class="start-num">1</div>
+                    <h3>아침 — 프로젝트 시작</h3>
+                    <p>Claude Code에게 말하기:</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>이 폴더를 Git으로 관리 시작하고, GitHub에 저장소도 만들어줘. "my-project"라는 이름으로.</code>
+                    </div>
+                    <p style="margin-top:8px; color:var(--text-secondary); font-size:0.9rem;">→ Claude가 <code>git init</code>, <code>gh repo create</code>, 초기 커밋, 푸시를 <strong>알아서</strong> 해줘요.</p>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">2</div>
+                    <h3>오전 — 새 기능 작업</h3>
+                    <p>Claude Code에게 말하기:</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>"add-contact-page"라는 브랜치를 만들고, 거기서 연락처 페이지를 추가해줘.</code>
+                    </div>
+                    <p style="margin-top:8px; color:var(--text-secondary); font-size:0.9rem;">→ Claude가 브랜치 생성, 파일 작업, 커밋까지 해줘요. 원본(main)은 안전!</p>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">3</div>
+                    <h3>오후 — PR 만들기</h3>
+                    <p>Claude Code에게 말하기:</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>지금까지 작업한 내용으로 PR을 만들어줘.</code>
+                    </div>
+                    <p style="margin-top:8px; color:var(--text-secondary); font-size:0.9rem;">→ Claude가 <code>git push</code> 후 <code>gh pr create</code>로 PR을 자동 생성! 제목과 설명도 작성해 줘요.</p>
+                </div>
+
+                <div class="start-item reveal">
+                    <div class="start-num">4</div>
+                    <h3>퇴근 전 — PR 확인 & 머지</h3>
+                    <p>Claude Code에게 말하기:</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">복사</button>
+                        <code>열려있는 PR 목록 보여줘. 문제 없으면 머지해줘.</code>
+                    </div>
+                    <p style="margin-top:8px; color:var(--text-secondary); font-size:0.9rem;">→ Claude가 <code>gh pr list</code>로 확인하고, <code>gh pr merge</code>로 합쳐줘요.</p>
+                </div>
+            </div>
+
+            <div class="tip reveal" style="margin-top:24px; background: var(--primary-bg); border-left-color: var(--primary);">
+                ✨ <strong>핵심 포인트:</strong> 위 시나리오에서 여러분이 직접 친 Git/gh 명령어는 <strong>0개</strong>예요. 개념을 이해하고 "무엇을 하고 싶은지"만 말하면, Claude Code가 올바른 명령어를 골라 실행해 줍니다. 비전공자에게 필요한 건 명령어 암기가 아니라 <strong>개념의 이해</strong>예요.
+            </div>
+
+            <!-- ===== 최종 팁 ===== -->
             <div class="analogy-box reveal" style="margin-top:48px;">
-                <h3>💡 비개발자를 위한 팁</h3>
-                <p>Git 명령어를 직접 외울 필요는 전혀 없어요! Claude Code에게 하고 싶은 일을 말로 설명하면, Claude가 알아서 올바른 Git 명령어를 실행해 줍니다. "커밋해줘", "되돌려줘", "브랜치 만들어줘"처럼 편하게 말하세요. 단, Claude가 실행하기 전에 무엇을 할지 설명해 줄 거예요 — 잘 읽어보고 승인하면 돼요.</p>
+                <h3>💡 비개발자를 위한 최종 팁</h3>
+                <p><strong>명령어를 외우는 시대는 끝났어요.</strong> Claude Code + gh CLI가 있으면, 여러분은 저장소, 브랜치, 커밋, 푸시, PR, 풀 — 이 6가지 개념만 이해하면 됩니다.</p>
+                <p style="margin-top:12px;">"브랜치 만들어줘", "커밋해줘", "PR 만들어줘"처럼 <strong>개념을 담은 한 마디</strong>면 Claude가 나머지를 해줘요. 위의 실습으로 개념을 체득한 뒤에는, 실전에서는 Claude에게 말하기만 하세요.</p>
+                <p style="margin-top:12px;"><strong>기억하세요:</strong> Git이 있으면 실수가 두렵지 않아요. 언제든 되돌릴 수 있으니까요. 그리고 Git은 코드만의 도구가 아니에요 — 문서, 데이터, 웹사이트, 어떤 파일이든 관리할 수 있습니다.</p>
             </div>
 
             <div class="page-nav">
